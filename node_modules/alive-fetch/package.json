@@ -1,0 +1,11 @@
+{
+  "name": "alive-fetch",
+  "version": "1.0.0",
+  "description": "node-fetch with keep alive",
+  "main": "index.js",
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "node-fetch": "latest"
+  }
+}
