@@ -49,6 +49,26 @@ app.get('/leaderboard', async (req, res) => {
   }
 });
 
+app.get('/wordpairs', async (req, res) => {
+  try {
+    const { version, date, round } = req.query;
+
+    // Perform any necessary validation on the input parameters
+
+    // Fetch the word pair from the database based on version, date, and round
+    const wordPair = await db.get(`version${version}-${date}-round${round}`);
+
+    if (!wordPair) {
+      return res.status(404).json({ message: 'Word pair not found' });
+    }
+
+    return res.status(200).json(wordPair);
+  } catch (error) {
+    console.error('Error fetching word pair:', error);
+    return res.status(500).json({ message: 'Failed to fetch word pair' });
+  }
+});
+
 app.get('/definition/:word', async (req, res) => {
   try {
     const { word } = req.params;
