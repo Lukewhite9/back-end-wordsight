@@ -1,0 +1,12 @@
+tackle,jail: Path 1 (length 9): tackle,tackled,tacked,backed,baked,bake,bale,ball,bail,jail, Path 2 (length 5): tackle,mackle,macle,maile,mail,jail
+filters,kings: Path 1 (length 9): filters,filter,filler,filled,filed,file,fine,fins,kins,kings, Path 2 (length 5): filters,filers,files,fines,kines,kings
+bottle,root: Path 1 (length 9): bottle,battle,battled,batted,ratted,rated,rate,rat,rot,root, Path 2 (length 5): bottle,mottle,motte,mott,moot,root
+ratios,values: Path 1 (length 9): ratios,patios,pathos,paths,pates,hates,hales,halves,valves,values, Path 2 (length 5): ratios,ratos,rates,rales,vales,values
+nano,soft: Path 1 (length 9): nano,anon,canon,canoe,cane,care,core,sore,sort,soft, Path 2 (length 5): nano,nona,noma,soma,sofa,soft
+weather,harder: Path 1 (length 9): weather,heather,heater,header,headed,herded,horded,hoarded,hoarder,harder, Path 2 (length 5): weather,heather,heater,header,herder,harder
+hat,hollow: Path 1 (length 9): hat,hot,how,bow,blow,below,bellow,fellow,follow,hollow, Path 2 (length 5): hat,halt,hall,hallo,hallow,hollow
+dodge,kit: Path 1 (length 9): dodge,lodge,lodger,longer,linger,liner,line,lie,lit,kit, Path 2 (length 5): dodge,doge,doe,die,dit,kit
+patent,waiver: Path 1 (length 9): patent,latent,lament,lamest,lames,lades,wades,waves,waives,waiver, Path 2 (length 5): patent,paten,pater,paver,waver,waiver
+patent,may: Path 1 (length 9): patent,latent,lament,lamest,lames,dames,dame,dam,day,may, Path 2 (length 5): patent,paten,pate,mate,mae,may
+boot,throws: Path 1 (length 9): boot,boo,too,toe,tee,thee,three,threw,throw,throws, Path 2 (length 5): boot,boos,bows,brows,trows,throws
+lamp,lesser: Path 1 (length 9): lamp,camp,came,case,cases,ceases,leases,lenses,lessen,lesser, Path 2 (length 5): lamp,lame,lamer,laser,leaser,lesser

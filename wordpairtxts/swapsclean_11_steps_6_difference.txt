@@ -1,0 +1,3 @@
+carries,pirates: Path 1 (length 11): carries,carried,married,marred,barred,bared,bare,rare,rate,irate,pirate,pirates, Path 2 (length 5): carries,caries,cartes,crates,prates,pirates
+fire,remote: Path 1 (length 11): fire,fare,fared,fated,rated,ranted,rented,dented,denoted,demoted,demote,remote, Path 2 (length 5): fire,fore,more,mote,emote,remote
+kit,remote: Path 1 (length 11): kit,kite,rite,rate,rated,ranted,rented,dented,denoted,demoted,demote,remote, Path 2 (length 5): kit,kite,mite,mote,emote,remote

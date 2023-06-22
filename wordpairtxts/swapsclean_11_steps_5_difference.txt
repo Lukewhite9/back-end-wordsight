@@ -1,0 +1,4 @@
+reveals,savings: Path 1 (length 11): reveals,revels,levers,livers,liners,lines,wines,swine,swing,sawing,saving,savings, Path 2 (length 6): reveals,revels,ravels,ravens,ravins,ravings,savings
+derived,dodge: Path 1 (length 11): derived,derive,drive,dive,dine,diner,liner,linger,longer,lodger,lodge,dodge, Path 2 (length 6): derived,derive,drive,dive,dove,doge,dodge
+fifth,sell: Path 1 (length 11): fifth,filth,filch,finch,winch,wince,mince,mice,mile,mill,sill,sell, Path 2 (length 6): fifth,filth,tilth,tilt,silt,sill,sell
+potter,solely: Path 1 (length 11): potter,otter,outer,cuter,cute,cure,curl,curly,surly,surely,sorely,solely, Path 2 (length 6): potter,porter,sorter,sorer,sorel,sorely,solely
