@@ -1,0 +1,9 @@
+addchallenges.js creates a unique ID for each word pair challenge. The unique ID is a combination of the version, date, round number, and word pair, formatted like this:
+
+version${version}-${formatDate(startingDate)}-round${round}-${pair}
+
+For example, if version = 1, date = '2023-01-01', round = 1, and pair = 'word1-word2', the unique ID would be:
+
+version1-2023-01-01-round1-word1-word2
+
+This unique ID ensures that each challenge in the database is distinct, as no two challenges can have the same combination of version, date, round, and word pair. The unique ID also carries information about the challenge, which can be useful when querying and analyzing the data.
