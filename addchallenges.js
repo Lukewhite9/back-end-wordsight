@@ -20,10 +20,17 @@ function parseTxtToJson(txtFile) {
   let lines = data.split('\n');
 
   return lines.map(line => {
-    let [startWord, restLine] = line.split(':', 1);
-    let [start, goalWord] = startWord.split(',');
-    return `${start}-${goalWord}`;
-  }).filter(pair => !seenPairs.has(pair));
+    let [wordPairString, ...restLine] = line.split(':');
+    let wordPairs = wordPairString.split(',');
+
+    if (wordPairs.length >= 2) {
+      let start_word = wordPairs[0].trim();
+      let goal_word = wordPairs[wordPairs.length - 1].trim();
+      return { start_word, goal_word };
+    } else {
+      return null; // Skip invalid lines without valid word pairs
+    }
+  }).filter(pair => pair && !seenPairs.has(`${pair.start_word}-${pair.goal_word}`));
 }
 
 async function main() {
@@ -47,22 +54,24 @@ async function main() {
         // Loop through each word pair
         for (let pair of wordPairs) {
           const existingPair = await db.get(`version${version}-${formatDate(startingDate)}-round${round}`);
-          if (existingPair) {
+          if (existingPair && existingPair.start_word === pair.start_word && existingPair.goal_word === pair.goal_word) {
             continue;
           }
 
           let pairData = {
-            id: `version${version}-${formatDate(startingDate)}-round${round}-${pair}`, // Unique ID
-            version: version,
-            date: formatDate(startingDate),
-            round: round,
-            pair: pair,
-          };
+  id: `version${version}-${formatDate(startingDate)}-round${round}-${pair.start_word}-${pair.goal_word}`,
+  version: version,
+  date: formatDate(startingDate),
+  round: round,
+  start_word: pair.start_word,
+  goal_word: pair.goal_word,
+};
+
 
           // Save the pair to the database
           await db.set(pairData.id, pairData);
-          console.log(`Added pair ${pair} for round ${round} on ${formatDate(startingDate)}`);
-          seenPairs.add(pair);
+          console.log(`Added pair ${pair.start_word}-${pair.goal_word} for round ${round} on ${formatDate(startingDate)}`);
+          seenPairs.add(`${pair.start_word}-${pair.goal_word}`);
           pairAdded = true;
           pairsAdded++;
           break;
