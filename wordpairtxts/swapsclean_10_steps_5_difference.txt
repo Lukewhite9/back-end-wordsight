@@ -1,0 +1,4 @@
+alerts,test: Path 1 (length 10): alerts,alert,avert,overt,over,ever,even,event,vent,tent,test, Path 2 (length 5): alerts,alert,avert,vert,vest,test
+springs,stress: Path 1 (length 10): springs,sprints,prints,pints,pins,pens,pews,sews,stews,strews,stress, Path 2 (length 5): springs,sprigs,sprits,strips,streps,stress
+carriers,codes: Path 1 (length 10): carriers,carrier,carried,married,marred,barred,bared,bares,bores,bodes,codes, Path 2 (length 5): carriers,carries,caries,cares,cades,codes
+dress,series: Path 1 (length 10): dress,dregs,drags,rags,rages,raves,eaves,elves,selves,serves,series, Path 2 (length 5): dress,drees,deers,seers,seres,series

@@ -15,7 +15,7 @@
     "cors": "^2.8.5",
     "express": "^4.18.2",
     "glob": "^10.3.0",
-    "node-fetch": "^3.2.6",
+    "node-fetch": "^3.3.1",
     "replit-storage": "^2.0.8"
   }
 }
