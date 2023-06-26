@@ -58,17 +58,15 @@ async function main() {
             continue;
           }
 
-          let pairData = {
-  id: `version${version}-${formatDate(startingDate)}-round${round}`, // Changed here
-  version: version,
-  date: formatDate(startingDate),
-  round: round,
+          let pairKey = `version${version}-${formatDate(startingDate)}-round${round}`;
+let pairData = {
   start_word: pair.start_word,
   goal_word: pair.goal_word,
 };
 
 // Save the pair to the database
-await db.set(pairData.id, pairData); // Use the same id for the key
+await db.set(pairKey, pairData); // The key is just the version, date, and round
+
 
           console.log(`Added pair ${pair.start_word}-${pair.goal_word} for round ${round} on ${formatDate(startingDate)}`);
           seenPairs.add(`${pair.start_word}-${pair.goal_word}`);
