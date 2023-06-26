@@ -15,15 +15,15 @@ app.use(express.json());
 
 app.post('/leaderboard', async (req, res) => {
   try {
-    const { name, score, time } = req.body;
+    const { name, score, time, date, version } = req.body;
 
-    if (!name || !score || !time) {
+    if (!name || !score || !time || !date || !version) {
       return res.status(400).json({ message: 'Missing required fields' });
     }
 
     const entryId = generateEntryId();
 
-    await db.set(entryId, { name, score, time });
+    await db.set(entryId, { name, score, time, date, version });
 
     return res.status(201).json({ message: 'Leaderboard entry added successfully' });
   } catch (error) {
