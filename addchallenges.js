@@ -20,12 +20,17 @@ function parseTxtToJson(txtFile) {
   let lines = data.split('\n');
 
   return lines.map(line => {
+    // This code is parsing lines from a text file. Each line looks like this:
+    // save,tide: Path 1 (length 4): save,have,hive,hide,tide, Path 2 (length 3): save,sade,side,tide
+
     let [wordPairString, ...restLine] = line.split(':');
     let wordPairs = wordPairString.split(',');
 
     if (wordPairs.length >= 2) {
       let start_word = wordPairs[0].trim();
       let goal_word = wordPairs[wordPairs.length - 1].trim();
+      // Here, instead of returning only start_word and goal_word, also return the length of the first path. 
+      // The returned object should look like this: { start_word, goal_word, path_lenth }
       return { start_word, goal_word };
     } else {
       return null; // Skip invalid lines without valid word pairs
