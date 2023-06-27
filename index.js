@@ -52,19 +52,14 @@ app.get('/leaderboard', async (req, res) => {
 app.get('/wordpairs', async (req, res) => {
   try {
     const { version, date, round } = req.query;
-
-    // Perform any necessary validation on the input parameters
-
-    // Fetch the word pair from the database based on version, date, and round
     const wordPair = await db.get(`version${version}-${date}-round${round}`);
 
     if (!wordPair) {
       return res.status(404).json({ message: 'Word pair not found' });
     }
 
-    console.log(wordPair)
-    const { start_word, goal_word } = wordPair;
-    return res.status(200).json({ wordPair });
+    const { start_word, goal_word, path_length } = wordPair;
+    return res.status(200).json({ start_word, goal_word, path_length });
   } catch (error) {
     console.error('Error fetching word pair:', error);
     return res.status(500).json({ message: 'Failed to fetch word pair' });
