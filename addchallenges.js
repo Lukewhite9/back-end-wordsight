@@ -14,29 +14,36 @@ const filePatterns = {
 
 let seenPairs = new Set();
 
-// Function to parse file to word pairs
 function parseTxtToJson(txtFile) {
   let data = fs.readFileSync(txtFile, 'utf8');
   let lines = data.split('\n');
 
   return lines.map(line => {
-    // This code is parsing lines from a text file. Each line looks like this:
-    // save,tide: Path 1 (length 4): save,have,hive,hide,tide, Path 2 (length 3): save,sade,side,tide
-
     let [wordPairString, ...restLine] = line.split(':');
     let wordPairs = wordPairString.split(',');
 
     if (wordPairs.length >= 2) {
       let start_word = wordPairs[0].trim();
       let goal_word = wordPairs[wordPairs.length - 1].trim();
-      // Here, instead of returning only start_word and goal_word, also return the length of the first path. 
-      // The returned object should look like this: { start_word, goal_word, path_lenth }
-      return { start_word, goal_word };
+
+      // Extract path lengths from the line
+      let pathLengths = restLine.map(path => {
+        let pathInfo = path.trim().match(/Path \d+ \(length (\d+)\)/);
+        return pathInfo ? parseInt(pathInfo[1]) : 0;
+      });
+
+      // Return the modified object including the path_length
+      return {
+        start_word,
+        goal_word,
+        path_length: pathLengths[0] // Assuming we want the length of the first path
+      };
     } else {
       return null; // Skip invalid lines without valid word pairs
     }
   }).filter(pair => pair && !seenPairs.has(`${pair.start_word}-${pair.goal_word}`));
 }
+
 
 async function main() {
   let version = 1; // Change this for different versions
@@ -64,16 +71,16 @@ async function main() {
           }
 
           let pairKey = `version${version}-${formatDate(startingDate)}-round${round}`;
-let pairData = {
-  start_word: pair.start_word,
-  goal_word: pair.goal_word,
-};
+          let pairData = {
+            start_word: pair.start_word,
+            goal_word: pair.goal_word,
+            path_length: pair.path_length // Add the path length to the pairData object
+          };
 
-// Save the pair to the database
-await db.set(pairKey, pairData); // The key is just the version, date, and round
+          // Save the pair to the database
+          await db.set(pairKey, pairData);
 
-
-          console.log(`Added pair ${pair.start_word}-${pair.goal_word} for round ${round} on ${formatDate(startingDate)}`);
+          console.log(`Added pair ${pair.start_word}-${pair.goal_word} with path length ${pair.path_length} for round ${round} on ${formatDate(startingDate)}`);
           seenPairs.add(`${pair.start_word}-${pair.goal_word}`);
           pairAdded = true;
           pairsAdded++;
