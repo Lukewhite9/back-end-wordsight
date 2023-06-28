@@ -15,33 +15,16 @@ app.use(express.json());
 
 app.post('/leaderboard', async (req, res) => {
   try {
-    const { name, score, time } = req.body;
-
-    if (!name || !score || !time) {
-      return res.status(400).json({ message: 'Missing required fields' });
-    }
-
-    const entryId = generateEntryId();
-
-    await db.set(entryId, { name, score, time });
-
-    return res.status(201).json({ message: 'Leaderboard entry added successfully' });
-  } catch (error) {
-    console.error('Error adding leaderboard entry:', error);
-    return res.status(500).json({ message: 'Failed to add leaderboard entry' });
-  }
-});
-
-app.post('/leaderboard', async (req, res) => {
-  try {
-    const { name, score, time } = req.body;
+    const { name, score, time, date, version } = req.body;
 
     const entryId = generateEntryId();
 
     const entry = {
       name: name || null, // If name is not provided, set it to null
       score,
-      time
+      time,
+      date,
+      version
     };
 
     await db.set(entryId, entry);
@@ -97,6 +80,7 @@ app.get('/pronunciation/:word', async (req, res) => {
     return res.status(500).json({ message: 'Failed to fetch pronunciation' });
   }
 });
+
 app.listen(3000, () => {
   console.log('Server is running on port 3000');
 });
