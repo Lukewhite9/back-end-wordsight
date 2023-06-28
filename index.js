@@ -16,11 +16,12 @@ app.use(express.json());
 app.post('/leaderboard', async (req, res) => {
   try {
     const { name, score, time, date, version } = req.body;
+    console.log('Received leaderboard entry:', { name, score, time, date, version });
 
     const entryId = generateEntryId();
 
     const entry = {
-      name: name || null, // If name is not provided, set it to null
+      name: name || null,
       score,
       time,
       date,
@@ -29,12 +30,42 @@ app.post('/leaderboard', async (req, res) => {
 
     await db.set(entryId, entry);
 
+    console.log('Leaderboard entry added successfully:', entryId);
+
     return res.status(201).json({ message: 'Leaderboard entry added successfully' });
   } catch (error) {
     console.error('Error adding leaderboard entry:', error);
     return res.status(500).json({ message: 'Failed to add leaderboard entry' });
   }
 });
+
+
+app.get('/leaderboard', async (req, res) => {
+  try {
+    const { date } = req.query;
+
+    // Fetch the leaderboard scores from the database
+    const scores = await db.list(); // Assuming the leaderboard entries are stored as key-value pairs in the database
+
+    // Filter the scores based on the specified date
+    const filteredScores = scores.filter(score => score.date === date);
+
+    // Include the version and date data in the response
+    const response = filteredScores.map(score => ({
+      name: score.name,
+      score: score.score,
+      time: score.time,
+      date: score.date,
+      version: score.version
+    }));
+
+    res.status(200).json(response);
+  } catch (error) {
+    console.error('Error fetching leaderboard scores:', error);
+    return res.status(500).json({ message: 'Failed to fetch leaderboard scores' });
+  }
+});
+
 
 app.get('/wordpairs', async (req, res) => {
   try {
