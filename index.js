@@ -3,7 +3,8 @@ const fetch = require('node-fetch');
 const { Client } = require('replit-storage');
 const Database = require('@replit/database');
 const cors = require('cors');
-
+const fs = require('fs');
+const path = require('path');
 const client = new Client();
 const db = new Database(process.env.REPLIT_DB_URL);
 const app = express();
@@ -65,6 +66,43 @@ app.get('/wordpairs', async (req, res) => {
     return res.status(500).json({ message: 'Failed to fetch word pair' });
   }
 });
+
+app.get('/randomwordpair', async (req, res) => {
+  try {
+    const { round } = req.query;
+    console.log('Received round number:', round);
+    const filenames = fs.readdirSync(path.join(__dirname, 'practice_mode_files'))
+      .filter(file => file.endsWith('_steps.txt'))
+      .sort((a, b) => parseInt(a) - parseInt(b)); // Sort the filenames in ascending order
+
+    const fileIndex = Math.floor(round / 2); // Determine the filename index based on the round number
+    const filename = filenames[fileIndex]; // Get the filename
+
+    // Ensure filename is valid
+    if (!filename) {
+      return res.status(404).json({ message: 'No more word pairs available' });
+    }
+
+    // Read the file content
+    const filePath = path.join(__dirname, 'practice_mode_files', filename);
+    const fileContent = fs.readFileSync(filePath, 'utf-8');
+    const wordPairs = fileContent.trim().split('\n'); // Split the file content by lines to get the word pairs
+
+    // Ensure the word pair for the current round exists
+    if (round >= wordPairs.length) {
+      return res.status(404).json({ message: 'Word pair not found' });
+    }
+
+    // Get the word pair for the current round
+    const wordPair = wordPairs[round].split(','); // Split the line by comma to get the start word and goal word
+
+    return res.status(200).json({ start_word: wordPair[0], goal_word: wordPair[1] });
+  } catch (error) {
+    console.error('Error fetching random word pair:', error);
+    return res.status(500).json({ message: 'Failed to fetch random word pair' });
+  }
+});
+
 
 app.get('/definition/:word', async (req, res) => {
   try {
