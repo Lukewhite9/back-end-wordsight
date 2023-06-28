@@ -32,20 +32,24 @@ app.post('/leaderboard', async (req, res) => {
   }
 });
 
-app.get('/leaderboard', async (req, res) => {
+app.post('/leaderboard', async (req, res) => {
   try {
-    const keys = await db.list();
-    const entries = await Promise.all(keys.map(async (key) => {
-      const entry = await db.get(key);
-      return entry;
-    }));
+    const { name, score, time } = req.body;
 
-    const sortedEntries = entries.sort((a, b) => b.score - a.score);
+    const entryId = generateEntryId();
 
-    return res.status(200).json(sortedEntries);
+    const entry = {
+      name: name || null, // If name is not provided, set it to null
+      score,
+      time
+    };
+
+    await db.set(entryId, entry);
+
+    return res.status(201).json({ message: 'Leaderboard entry added successfully' });
   } catch (error) {
-    console.error('Error retrieving leaderboard entries:', error);
-    return res.status(500).json({ message: 'Failed to retrieve leaderboard entries' });
+    console.error('Error adding leaderboard entry:', error);
+    return res.status(500).json({ message: 'Failed to add leaderboard entry' });
   }
 });
 
