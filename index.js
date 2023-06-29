@@ -68,7 +68,7 @@ app.get('/leaderboard', async (req, res) => {
 
 // Your hardcoded dummy game
 const dummyGame = {
-  gameID: 'game-1',  // unique game ID
+  gameID: 'game-1', 
   rounds: [
     {
       round_number: 1,
