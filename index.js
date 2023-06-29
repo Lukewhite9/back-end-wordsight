@@ -66,21 +66,51 @@ app.get('/leaderboard', async (req, res) => {
   }
 });
 
+// Your hardcoded dummy game
+const dummyGame = {
+  gameID: 'game-1',  // unique game ID
+  rounds: [
+    {
+      round_number: 1,
+      start_word: 'cat',
+      goal_word: 'dog',
+      path_length: 5,
+    },
+    {
+      round_number: 2,
+      start_word: 'sun',
+      goal_word: 'moon',
+      path_length: 4,
+    },
+    {
+      round_number: 3,
+      start_word: 'shirt',
+      goal_word: 'pants',
+      path_length: 6,
+    },
+    {
+      round_number: 4,
+      start_word: 'left',
+      goal_word: 'right',
+      path_length: 5,
+    },
+    {
+      round_number: 5,
+      start_word: 'black',
+      goal_word: 'white',
+      path_length: 4,
+    }
+  ]
+};
+
 
 app.get('/wordpairs', async (req, res) => {
   try {
-    const { version, date, round } = req.query;
-    const wordPair = await db.get(`version${version}-${date}-round${round}`);
-
-    if (!wordPair) {
-      return res.status(404).json({ message: 'Word pair not found' });
-    }
-
-    const { start_word, goal_word, path_length } = wordPair;
-    return res.status(200).json({ start_word, goal_word, path_length });
+    // Directly send the dummy game to the front end
+    return res.status(200).json(dummyGame);
   } catch (error) {
-    console.error('Error fetching word pair:', error);
-    return res.status(500).json({ message: 'Failed to fetch word pair' });
+    console.error('Error fetching game data:', error);
+    return res.status(500).json({ message: 'Failed to fetch game data' });
   }
 });
 
