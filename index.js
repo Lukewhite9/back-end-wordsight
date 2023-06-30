@@ -66,53 +66,37 @@ app.get('/leaderboard', async (req, res) => {
   }
 });
 
-// Your hardcoded dummy game
-const dummyGame = {
-  gameID: 'game-1', 
-  rounds: [
-    {
-      round_number: 1,
-      start_word: 'cat',
-      goal_word: 'dog',
-      path_length: 5,
-    },
-    {
-      round_number: 2,
-      start_word: 'sun',
-      goal_word: 'moon',
-      path_length: 4,
-    },
-    {
-      round_number: 3,
-      start_word: 'shirt',
-      goal_word: 'pants',
-      path_length: 6,
-    },
-    {
-      round_number: 4,
-      start_word: 'left',
-      goal_word: 'right',
-      path_length: 5,
-    },
-    {
-      round_number: 5,
-      start_word: 'black',
-      goal_word: 'white',
-      path_length: 4,
-    }
-  ]
-};
-
 
 app.get('/wordpairs', async (req, res) => {
   try {
-    // Directly send the dummy game to the front end
-    return res.status(200).json(dummyGame);
+    const { date } = req.query;
+
+    const keys = await db.list();
+    const gameKeys = keys.filter(key => key.includes(`version${version}-${date}`));
+
+    // If no games are found for the requested date
+    if (!gameKeys || gameKeys.length === 0) {
+      return res.status(404).json({ message: 'No games found for the specified date' });
+    }
+
+    // Sort game keys to ensure we have the latest version
+    gameKeys.sort();
+    const latestGameKey = gameKeys[gameKeys.length - 1];
+
+    // Get the game data for the latest version
+    const gameData = await db.get(latestGameKey);
+    if (!gameData) {
+      return res.status(404).json({ message: `Game data not found for date ${date}` });
+    }
+    return res.status(200).json(gameData);
+
   } catch (error) {
-    console.error('Error fetching game data:', error);
-    return res.status(500).json({ message: 'Failed to fetch game data' });
+    console.error('Error fetching word pair:', error);
+    return res.status(500).json({ message: 'Failed to fetch word pair' });
   }
 });
+
+
 
 app.get('/definition/:word', async (req, res) => {
   try {
