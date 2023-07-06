@@ -69,13 +69,14 @@ app.get('/wordpairs', async (req, res) => {
 
 app.get('/randomwordpair', async (req, res) => {
   try {
-    const { round } = req.query;
-    console.log('Received round number:', round);
+    const { round, difficulty } = req.query;
+    const difficultyNumber = Number(difficulty);
+    console.log('Received round number:', round, 'with difficulty:', difficulty);
     const filenames = fs.readdirSync(path.join(__dirname, 'practice_mode_files'))
       .filter(file => file.endsWith('_steps.txt'))
       .sort((a, b) => parseInt(a) - parseInt(b)); // Sort the filenames in ascending order
 
-    const fileIndex = Math.floor(round / 2); // Determine the filename index based on the round number
+    const fileIndex = (difficulty * round) - 1; // Determine the filename index based on the difficulty and round number
     const filename = filenames[fileIndex]; // Get the filename
 
     // Ensure filename is valid
@@ -102,6 +103,7 @@ app.get('/randomwordpair', async (req, res) => {
     return res.status(500).json({ message: 'Failed to fetch random word pair' });
   }
 });
+
 
 
 app.get('/definition/:word', async (req, res) => {
