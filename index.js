@@ -76,7 +76,7 @@ app.get('/randomwordpair', async (req, res) => {
       .filter(file => file.endsWith('_steps.txt'))
       .sort((a, b) => parseInt(a) - parseInt(b)); // Sort the filenames in ascending order
 
-    const fileIndex = (difficulty * round) - 1; // Determine the filename index based on the difficulty and round number
+    const fileIndex = (difficulty * Math.ceil(round / 2)) - 1; 
     const filename = filenames[fileIndex]; // Get the filename
 
     // Ensure filename is valid

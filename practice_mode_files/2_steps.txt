@@ -1,7 +1,6 @@
 forms,fork
 dive,rise
 routing,posting
-her,sec
 based,case
 ways,pay
 sail,aim
