@@ -69,7 +69,7 @@ app.get('/leaderboard', async (req, res) => {
 
 app.get('/wordpairs', async (req, res) => {
   try {
-    const { date } = req.query;
+    const { date, version } = req.query;
 
     const keys = await db.list();
     const gameKeys = keys.filter(key => key.includes(`version${version}-${date}`));
@@ -95,6 +95,7 @@ app.get('/wordpairs', async (req, res) => {
     return res.status(500).json({ message: 'Failed to fetch word pair' });
   }
 });
+
 
 
 

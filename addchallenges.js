@@ -46,7 +46,7 @@ function parseTxtToJson(txtFile) {
 
 async function main() {
   let version = 1; // Change this for different versions
-  let startingDate = new Date('2023-06-2'); // Set your starting date here
+  let startingDate = new Date('2023-07-08'); // Set your starting date here
   let daysProcessed = 0;
 
   // Loop through each day
