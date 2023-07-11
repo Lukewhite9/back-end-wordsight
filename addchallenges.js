@@ -44,57 +44,66 @@ function parseTxtToJson(txtFile) {
   }).filter(pair => pair && !seenPairs.has(`${pair.start_word}-${pair.goal_word}`));
 }
 
-
 async function main() {
   let version = 1; // Change this for different versions
-  let startingDate = new Date('2023-06-22'); // Set your starting date here
+  let startingDate = new Date('2023-07-08'); // Set your starting date here
   let daysProcessed = 0;
 
   // Loop through each day
   while (true) {
-    let pairsAdded = 0;
+    let gameData = {
+      gameID: `version${version}-${formatDate(startingDate, 'yyyy-MM-dd')}`,
+      rounds: [],
+    };
 
     // Process each round
-    for (let round = 1; round <= 5; round++) {
-      let files = filePatterns[round];
-      let pairAdded = false;
+for (let round = 1; round <= 5; round++) {
+  let files = filePatterns[round];
+  let pairAdded = false;
 
-      // Loop through each file
-      for (let file of files) {
-        let wordPairs = parseTxtToJson(file);
+  // Loop through each file
+  for (let file of files) {
+    let wordPairs = parseTxtToJson(file);
 
-        // Loop through each word pair
-        for (let pair of wordPairs) {
-          const existingPair = await db.get(`version${version}-${formatDate(startingDate)}-round${round}`);
-          if (existingPair && existingPair.start_word === pair.start_word && existingPair.goal_word === pair.goal_word) {
-            continue;
-          }
+    // Loop through each word pair
+    for (let pair of wordPairs) {
+      const existingPairIndex = gameData.rounds.findIndex(
+        (roundData) => roundData.start_word === pair.start_word && roundData.goal_word === pair.goal_word
+      );
 
-          let pairKey = `version${version}-${formatDate(startingDate)}-round${round}`;
-          let pairData = {
-            start_word: pair.start_word,
-            goal_word: pair.goal_word,
-            path_length: pair.path_length // Add the path length to the pairData object
-          };
-
-          // Save the pair to the database
-          await db.set(pairKey, pairData);
-
-          console.log(`Added pair ${pair.start_word}-${pair.goal_word} with path length ${pair.path_length} for round ${round} on ${formatDate(startingDate)}`);
-          seenPairs.add(`${pair.start_word}-${pair.goal_word}`);
-          pairAdded = true;
-          pairsAdded++;
-          break;
-        }
-
-        if (pairAdded) break;
+      if (existingPairIndex !== -1) {
+        continue;
       }
+
+      gameData.rounds.push({
+        round_number: round,
+        start_word: pair.start_word,
+        goal_word: pair.goal_word,
+        path_length: pair.path_length,
+      });
+
+      console.log(
+        `Added pair ${pair.start_word}-${pair.goal_word} with path length ${pair.path_length} for round ${round} on ${formatDate(startingDate)}`
+      );
+
+      seenPairs.add(`${pair.start_word}-${pair.goal_word}`);
+      pairAdded = true;
+      break; // This break is for the innermost for loop
     }
 
-    if (pairsAdded < 5) {
-      console.log(`Couldn't find enough unique pairs for ${formatDate(startingDate)}. Stopping.`);
-      break;
-    }
+    if (pairAdded) break; // This break is for the middle for loop
+  }
+
+  // Comment out the break that was here
+}
+
+if (gameData.rounds.length < 5) {
+  console.log(`Couldn't find enough unique pairs for ${formatDate(startingDate)}. Stopping.`);
+  break;
+}
+
+    // Save the gameData to the database
+    await db.set(gameData.gameID, gameData);
 
     // Advance to the next date
     startingDate.setDate(startingDate.getDate() + 1);
@@ -104,10 +113,15 @@ async function main() {
   console.log(`Finished processing. ${daysProcessed} complete days were processed.`);
 }
 
-function formatDate(date) {
+function formatDate(date, format = 'yyyy-MM-dd') {
   let year = date.getFullYear();
   let month = String(date.getMonth() + 1).padStart(2, '0');
   let day = String(date.getDate()).padStart(2, '0');
+
+  if (format === 'MMddyyyy') {
+    return `${month}${day}${year}`;
+  }
+
   return `${year}-${month}-${day}`;
 }
 
