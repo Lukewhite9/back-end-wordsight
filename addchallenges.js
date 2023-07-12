@@ -14,98 +14,106 @@ const filePatterns = {
 
 let seenPairs = new Set();
 
+function shuffle(array) {
+  let currentIndex = array.length;
+  let temporaryValue, randomIndex;
+
+  while (currentIndex !== 0) {
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+  }
+
+  return array;
+}
+
 function parseTxtToJson(txtFile) {
   let data = fs.readFileSync(txtFile, 'utf8');
   let lines = data.split('\n');
 
-  return lines.map(line => {
+  let wordPairs = lines.map(line => {
     let [wordPairString, ...restLine] = line.split(':');
-    let wordPairs = wordPairString.split(',');
+    let pairs = wordPairString.split(',');
 
-    if (wordPairs.length >= 2) {
-      let start_word = wordPairs[0].trim();
-      let goal_word = wordPairs[wordPairs.length - 1].trim();
+    if (pairs.length >= 2) {
+      let start_word = pairs[0].trim();
+      let goal_word = pairs[pairs.length - 1].trim();
 
-      // Extract path lengths from the line
-      let pathLengths = restLine.map(path => {
-        let pathInfo = path.trim().match(/Path \d+ \(length (\d+)\)/);
-        return pathInfo ? parseInt(pathInfo[1]) : 0;
-      });
-
-      // Return the modified object including the path_length
       return {
         start_word,
         goal_word,
-        path_length: pathLengths[0] // Assuming we want the length of the first path
+        path_length: restLine.join('\n')
       };
     } else {
-      return null; // Skip invalid lines without valid word pairs
+      return null;
     }
   }).filter(pair => pair && !seenPairs.has(`${pair.start_word}-${pair.goal_word}`));
+
+  return shuffle(wordPairs);
 }
 
 async function main() {
-  let version = 1; // Change this for different versions
-  let startingDate = new Date('2023-07-08'); // Set your starting date here
+  let version = 1;
+  let startingDate = new Date('2023-07-12');
   let daysProcessed = 0;
 
-  // Loop through each day
   while (true) {
     let gameData = {
       gameID: `version${version}-${formatDate(startingDate, 'yyyy-MM-dd')}`,
       rounds: [],
     };
 
-    // Process each round
-for (let round = 1; round <= 5; round++) {
-  let files = filePatterns[round];
-  let pairAdded = false;
+    for (let round = 1; round <= 5; round++) {
+      let files = shuffle(filePatterns[round]);
+      let pairAdded = false;
 
-  // Loop through each file
-  for (let file of files) {
-    let wordPairs = parseTxtToJson(file);
+      for (let file of files) {
+        let wordPairs = parseTxtToJson(file);
 
-    // Loop through each word pair
-    for (let pair of wordPairs) {
-      const existingPairIndex = gameData.rounds.findIndex(
-        (roundData) => roundData.start_word === pair.start_word && roundData.goal_word === pair.goal_word
-      );
+        for (let pair of wordPairs) {
+          const existingPairIndex = gameData.rounds.findIndex(
+            (roundData) => roundData.start_word === pair.start_word && roundData.goal_word === pair.goal_word
+          );
 
-      if (existingPairIndex !== -1) {
-        continue;
+          if (existingPairIndex !== -1) {
+            continue;
+          }
+
+          gameData.rounds.push({
+            round_number: round,
+            start_word: pair.start_word,
+            goal_word: pair.goal_word,
+            path_length: pair.path_length,
+          });
+
+          console.log(
+            `Added pair ${pair.start_word}-${pair.goal_word} with path length ${pair.path_length} for round ${round} on ${formatDate(startingDate)}`
+          );
+
+          seenPairs.add(`${pair.start_word}-${pair.goal_word}`);
+          pairAdded = true;
+          break;
+        }
+
+        if (pairAdded) {
+          break;
+        }
       }
 
-      gameData.rounds.push({
-        round_number: round,
-        start_word: pair.start_word,
-        goal_word: pair.goal_word,
-        path_length: pair.path_length,
-      });
-
-      console.log(
-        `Added pair ${pair.start_word}-${pair.goal_word} with path length ${pair.path_length} for round ${round} on ${formatDate(startingDate)}`
-      );
-
-      seenPairs.add(`${pair.start_word}-${pair.goal_word}`);
-      pairAdded = true;
-      break; // This break is for the innermost for loop
+      if (!pairAdded) {
+        console.log(`No suitable word pair found for round ${round} on ${formatDate(startingDate)}. Skipping day.`);
+      }
     }
 
-    if (pairAdded) break; // This break is for the middle for loop
-  }
+    if (gameData.rounds.length < 5) {
+      console.log(`Couldn't find enough unique pairs for ${formatDate(startingDate)}. Stopping.`);
+      break;
+    }
 
-  // Comment out the break that was here
-}
-
-if (gameData.rounds.length < 5) {
-  console.log(`Couldn't find enough unique pairs for ${formatDate(startingDate)}. Stopping.`);
-  break;
-}
-
-    // Save the gameData to the database
     await db.set(gameData.gameID, gameData);
 
-    // Advance to the next date
     startingDate.setDate(startingDate.getDate() + 1);
     daysProcessed++;
   }
