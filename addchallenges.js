@@ -41,10 +41,13 @@ function parseTxtToJson(txtFile) {
       let start_word = pairs[0].trim();
       let goal_word = pairs[pairs.length - 1].trim();
 
+      // Extract path length from the line
+      let pathLength = restLine[0].match(/Path \d+ \(length (\d+)\)/)[1];
+
       return {
         start_word,
         goal_word,
-        path_length: restLine.join('\n')
+        path_length: parseInt(pathLength),
       };
     } else {
       return null;
@@ -104,6 +107,7 @@ async function main() {
 
       if (!pairAdded) {
         console.log(`No suitable word pair found for round ${round} on ${formatDate(startingDate)}. Skipping day.`);
+        break;
       }
     }
 
