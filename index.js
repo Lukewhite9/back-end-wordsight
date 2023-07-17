@@ -74,12 +74,12 @@ app.get('/randomwordpair', async (req, res) => {
     console.log('Received round number:', round, 'with difficulty:', difficulty);
     const filenames = fs.readdirSync(path.join(__dirname, 'practice_mode_files'))
       .filter(file => file.endsWith('_steps.txt'))
-      .sort((a, b) => parseInt(a) - parseInt(b)); // Sort the filenames in ascending order
+      .sort((a, b) => parseInt(a) - parseInt(b));
 
-    const fileIndex = (difficulty * Math.ceil(round / 2)) - 1; 
-    const filename = filenames[fileIndex]; // Get the filename
+    console.log(filenames)
+    const fileIndex = (difficultyNumber * Math.ceil(round / 2)) - 1;
+    const filename = filenames[fileIndex];
 
-    // Ensure filename is valid
     if (!filename) {
       return res.status(404).json({ message: 'No more word pairs available' });
     }
