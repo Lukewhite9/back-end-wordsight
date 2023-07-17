@@ -16,15 +16,22 @@ app.use(express.json());
 
 app.post('/leaderboard', async (req, res) => {
   try {
-    const { name, score, time } = req.body;
-
-    if (!name || !score || !time) {
-      return res.status(400).json({ message: 'Missing required fields' });
-    }
+    const { name, score, time, date, version } = req.body;
+    console.log('Received leaderboard entry:', { name, score, time, date, version });
 
     const entryId = generateEntryId();
 
-    await db.set(entryId, { name, score, time });
+    const entry = {
+      name: name || null,
+      score,
+      time,
+      date,
+      version
+    };
+
+    await db.set(entryId, entry);
+
+    console.log('Leaderboard entry added successfully:', entryId);
 
     return res.status(201).json({ message: 'Leaderboard entry added successfully' });
   } catch (error) {
@@ -33,34 +40,57 @@ app.post('/leaderboard', async (req, res) => {
   }
 });
 
+
 app.get('/leaderboard', async (req, res) => {
   try {
-    const keys = await db.list();
-    const entries = await Promise.all(keys.map(async (key) => {
-      const entry = await db.get(key);
-      return entry;
+    const { date } = req.query;
+
+    // Fetch the leaderboard scores from the database
+    const scores = await db.list(); // Assuming the leaderboard entries are stored as key-value pairs in the database
+
+    // Filter the scores based on the specified date
+    const filteredScores = scores.filter(score => score.date === date);
+
+    // Include the version and date data in the response
+    const response = filteredScores.map(score => ({
+      name: score.name,
+      score: score.score,
+      time: score.time,
+      date: score.date,
+      version: score.version
     }));
 
-    const sortedEntries = entries.sort((a, b) => b.score - a.score);
-
-    return res.status(200).json(sortedEntries);
+    res.status(200).json(response);
   } catch (error) {
-    console.error('Error retrieving leaderboard entries:', error);
-    return res.status(500).json({ message: 'Failed to retrieve leaderboard entries' });
+    console.error('Error fetching leaderboard scores:', error);
+    return res.status(500).json({ message: 'Failed to fetch leaderboard scores' });
   }
 });
 
+
 app.get('/wordpairs', async (req, res) => {
   try {
-    const { version, date, round } = req.query;
-    const wordPair = await db.get(`version${version}-${date}-round${round}`);
+    const { date, version } = req.query;
 
-    if (!wordPair) {
-      return res.status(404).json({ message: 'Word pair not found' });
+    const keys = await db.list();
+    const gameKeys = keys.filter(key => key.includes(`version${version}-${date}`));
+
+    // If no games are found for the requested date
+    if (!gameKeys || gameKeys.length === 0) {
+      return res.status(404).json({ message: 'No games found for the specified date' });
     }
 
-    const { start_word, goal_word, path_length } = wordPair;
-    return res.status(200).json({ start_word, goal_word, path_length });
+    // Sort game keys to ensure we have the latest version
+    gameKeys.sort();
+    const latestGameKey = gameKeys[gameKeys.length - 1];
+
+    // Get the game data for the latest version
+    const gameData = await db.get(latestGameKey);
+    if (!gameData) {
+      return res.status(404).json({ message: `Game data not found for date ${date}` });
+    }
+    return res.status(200).json(gameData);
+
   } catch (error) {
     console.error('Error fetching word pair:', error);
     return res.status(500).json({ message: 'Failed to fetch word pair' });
@@ -104,8 +134,6 @@ app.get('/randomwordpair', async (req, res) => {
   }
 });
 
-
-
 app.get('/definition/:word', async (req, res) => {
   try {
     const { word } = req.params;
@@ -133,6 +161,7 @@ app.get('/pronunciation/:word', async (req, res) => {
     return res.status(500).json({ message: 'Failed to fetch pronunciation' });
   }
 });
+
 app.listen(3000, () => {
   console.log('Server is running on port 3000');
 });
