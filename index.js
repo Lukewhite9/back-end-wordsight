@@ -107,7 +107,7 @@ app.get('/randomwordpair', async (req, res) => {
       .sort((a, b) => parseInt(a) - parseInt(b));
 
     console.log(filenames)
-    const fileIndex = (difficultyNumber * Math.ceil(round / 2)) - 1;
+    const fileIndex = Math.floor(difficultyNumber * round / 2) + 1;
     const filename = filenames[fileIndex];
 
     if (!filename) {
@@ -119,13 +119,9 @@ app.get('/randomwordpair', async (req, res) => {
     const fileContent = fs.readFileSync(filePath, 'utf-8');
     const wordPairs = fileContent.trim().split('\n'); // Split the file content by lines to get the word pairs
 
-    // Ensure the word pair for the current round exists
-    if (round >= wordPairs.length) {
-      return res.status(404).json({ message: 'Word pair not found' });
-    }
-
-    // Get the word pair for the current round
-    const wordPair = wordPairs[round].split(','); // Split the line by comma to get the start word and goal word
+    // Get a random word pair from the file
+    const randomIndex = Math.floor(Math.random() * wordPairs.length);
+    const wordPair = wordPairs[randomIndex].split(','); // Split the line by comma to get the start word and goal word
 
     return res.status(200).json({ start_word: wordPair[0], goal_word: wordPair[1] });
   } catch (error) {
@@ -133,6 +129,7 @@ app.get('/randomwordpair', async (req, res) => {
     return res.status(500).json({ message: 'Failed to fetch random word pair' });
   }
 });
+
 
 app.get('/definition/:word', async (req, res) => {
   try {
