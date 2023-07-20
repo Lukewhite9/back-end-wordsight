@@ -106,7 +106,7 @@ app.get('/randomwordpair', async (req, res) => {
       .sort((a, b) => parseInt(a) - parseInt(b));
 
     console.log(filenames)
-    const fileIndex = Math.floor(difficultyNumber * round / 2) + 1;
+    const fileIndex = Math.floor(difficultyNumber * round / 2);
     const filename = filenames[fileIndex];
 
     if (!filename) {
