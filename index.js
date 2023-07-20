@@ -51,7 +51,6 @@ app.get('/leaderboard', async (req, res) => {
     // Filter the scores based on the specified date
     const filteredScores = scores.filter(score => score.date === date);
 
-    // Include the version and date data in the response
     const response = filteredScores.map(score => ({
       name: score.name,
       score: score.score,
