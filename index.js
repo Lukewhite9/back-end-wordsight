@@ -40,13 +40,16 @@ app.post('/leaderboard', async (req, res) => {
   }
 });
 
-
 app.get('/leaderboard', async (req, res) => {
   try {
     const { date } = req.query;
 
-    // Fetch the leaderboard scores from the database
-    const scores = await db.list(); // Assuming the leaderboard entries are stored as key-value pairs in the database
+    // Fetch all the keys from the database
+    const keys = await db.list();
+
+    // For each key, get the actual data (the leaderboard entry)
+    const scoresPromises = keys.map(key => db.get(key));
+    const scores = await Promise.all(scoresPromises);
 
     // Filter the scores based on the specified date
     const filteredScores = scores.filter(score => score.date === date);
@@ -65,6 +68,8 @@ app.get('/leaderboard', async (req, res) => {
     return res.status(500).json({ message: 'Failed to fetch leaderboard scores' });
   }
 });
+
+
 
 
 app.get('/wordpairs', async (req, res) => {
