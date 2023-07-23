@@ -9,6 +9,9 @@ app.get('/statistics', async (req, res) => {
   try {
     const { startDate, endDate } = req.query;
 
+    const parsedStartDate = Date.parse(startDate);
+    const parsedEndDate = Date.parse(endDate);
+    
     const keys = await db.list();
     const scoresPromises = keys.map(key => db.get(key));
     const scores = await Promise.all(scoresPromises);
