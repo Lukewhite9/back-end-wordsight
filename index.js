@@ -135,9 +135,11 @@ app.get('/randomwordpair', async (req, res) => {
 });
 
 
+const pluralize = require('pluralize');
+
 app.get('/definition/:word', async (req, res) => {
   try {
-    const { word } = req.params;
+    const word = pluralize.singular(req.params.word);
 
     const response = await fetch(`https://api.wordnik.com/v4/word.json/${word}/definitions?limit=3&includeRelated=false&sourceDictionaries=ahd-5&useCanonical=false&includeTags=false&api_key=${WORDNIK_API_KEY}`);
     const data = await response.json();
@@ -151,7 +153,7 @@ app.get('/definition/:word', async (req, res) => {
 
 app.get('/pronunciation/:word', async (req, res) => {
   try {
-    const { word } = req.params;
+    const word = pluralize.singular(req.params.word);
 
     const response = await fetch(`https://api.wordnik.com/v4/word.json/${word}/pronunciations?useCanonical=false&sourceDictionary=ahd-5&typeFormat=ahd-5&limit=2&api_key=${WORDNIK_API_KEY}`);
     const data = await response.json();
@@ -162,6 +164,7 @@ app.get('/pronunciation/:word', async (req, res) => {
     return res.status(500).json({ message: 'Failed to fetch pronunciation' });
   }
 });
+
 
 app.listen(3000, () => {
   console.log('Server is running on port 3000');
