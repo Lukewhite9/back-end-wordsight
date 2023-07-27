@@ -135,16 +135,28 @@ app.get('/randomwordpair', async (req, res) => {
 });
 
 
-const pluralize = require('pluralize');
+const natural = require('natural');
+
+// other app code...
 
 app.get('/definition/:word', async (req, res) => {
   try {
-    const word = pluralize.singular(req.params.word);
+    // Instead of using the pluralize library to find the singular form, 
+    // use natural's PorterStemmer to find the root of the word.
+    const word = natural.PorterStemmer.stem(req.params.word);
 
     const response = await fetch(`https://api.wordnik.com/v4/word.json/${word}/definitions?limit=3&includeRelated=false&sourceDictionaries=ahd-5&useCanonical=false&includeTags=false&api_key=${WORDNIK_API_KEY}`);
     const data = await response.json();
 
-    res.status(200).json(data);
+    if (data.length > 0) {
+      return res.status(200).json(data);
+    } else {
+      // if there is no root form found, try the original word
+      const originalWordResponse = await fetch(`https://api.wordnik.com/v4/word.json/${req.params.word}/definitions?limit=3&includeRelated=false&sourceDictionaries=ahd-5&useCanonical=false&includeTags=false&api_key=${WORDNIK_API_KEY}`);
+      const originalWordData = await originalWordResponse.json();
+      res.status(200).json(originalWordData);
+    }
+
   } catch (error) {
     console.error('Error fetching definition:', error);
     return res.status(500).json({ message: 'Failed to fetch definition' });
@@ -153,17 +165,26 @@ app.get('/definition/:word', async (req, res) => {
 
 app.get('/pronunciation/:word', async (req, res) => {
   try {
-    const word = pluralize.singular(req.params.word);
+    const word = natural.PorterStemmer.stem(req.params.word);
 
     const response = await fetch(`https://api.wordnik.com/v4/word.json/${word}/pronunciations?useCanonical=false&sourceDictionary=ahd-5&typeFormat=ahd-5&limit=2&api_key=${WORDNIK_API_KEY}`);
     const data = await response.json();
 
-    res.status(200).json(data);
+    if (data.length > 0) {
+      return res.status(200).json(data);
+    } else {
+      // if there is no root form found, try the original word
+      const originalWordResponse = await fetch(`https://api.wordnik.com/v4/word.json/${req.params.word}/pronunciations?useCanonical=false&sourceDictionary=ahd-5&typeFormat=ahd-5&limit=2&api_key=${WORDNIK_API_KEY}`);
+      const originalWordData = await originalWordResponse.json();
+      res.status(200).json(originalWordData);
+    }
+
   } catch (error) {
     console.error('Error fetching pronunciation:', error);
     return res.status(500).json({ message: 'Failed to fetch pronunciation' });
   }
 });
+
 
 
 app.listen(3000, () => {
