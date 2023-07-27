@@ -2,8 +2,6 @@ sizes,size
 action,auction
 breast,beast
 hat,cat
-inn,inns
-sorts,shorts
 males,male
 custom,customs
 calm,cam
