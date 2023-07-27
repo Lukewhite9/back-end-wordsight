@@ -8,6 +8,7 @@ const path = require('path');
 const client = new Client();
 const db = new Database(process.env.REPLIT_DB_URL);
 const app = express();
+const natural = require('natural');
 
 const { WORDNIK_API_KEY } = process.env;
 
@@ -43,15 +44,9 @@ app.post('/leaderboard', async (req, res) => {
 app.get('/leaderboard', async (req, res) => {
   try {
     const { date } = req.query;
-
-    // Fetch all the keys from the database
     const keys = await db.list();
-
-    // For each key, get the actual data (the leaderboard entry)
     const scoresPromises = keys.map(key => db.get(key));
     const scores = await Promise.all(scoresPromises);
-
-    // Filter the scores based on the specified date
     const filteredScores = scores.filter(score => score.date === date);
 
     const response = filteredScores.map(score => ({
@@ -79,16 +74,13 @@ app.get('/wordpairs', async (req, res) => {
     const keys = await db.list();
     const gameKeys = keys.filter(key => key.includes(`version${version}-${date}`));
 
-    // If no games are found for the requested date
     if (!gameKeys || gameKeys.length === 0) {
       return res.status(404).json({ message: 'No games found for the specified date' });
     }
 
-    // Sort game keys to ensure we have the latest version
     gameKeys.sort();
     const latestGameKey = gameKeys[gameKeys.length - 1];
 
-    // Get the game data for the latest version
     const gameData = await db.get(latestGameKey);
     if (!gameData) {
       return res.status(404).json({ message: `Game data not found for date ${date}` });
@@ -118,15 +110,12 @@ app.get('/randomwordpair', async (req, res) => {
       return res.status(404).json({ message: 'No more word pairs available' });
     }
 
-    // Read the file content
     const filePath = path.join(__dirname, 'practice_mode_files', filename);
     const fileContent = fs.readFileSync(filePath, 'utf-8');
-    const wordPairs = fileContent.trim().split('\n'); // Split the file content by lines to get the word pairs
+    const wordPairs = fileContent.trim().split('\n');
 
-    // Get a random word pair from the file
     const randomIndex = Math.floor(Math.random() * wordPairs.length);
-    const wordPair = wordPairs[randomIndex].split(','); // Split the line by comma to get the start word and goal word
-
+    const wordPair = wordPairs[randomIndex].split(',');
     return res.status(200).json({ start_word: wordPair[0], goal_word: wordPair[1] });
   } catch (error) {
     console.error('Error fetching random word pair:', error);
@@ -135,14 +124,13 @@ app.get('/randomwordpair', async (req, res) => {
 });
 
 
-const natural = require('natural');
 
-// other app code...
+
+
 
 app.get('/definition/:word', async (req, res) => {
   try {
-    // Instead of using the pluralize library to find the singular form, 
-    // use natural's PorterStemmer to find the root of the word.
+
     const word = natural.PorterStemmer.stem(req.params.word);
 
     const response = await fetch(`https://api.wordnik.com/v4/word.json/${word}/definitions?limit=3&includeRelated=false&sourceDictionaries=ahd-5&useCanonical=false&includeTags=false&api_key=${WORDNIK_API_KEY}`);
@@ -151,7 +139,7 @@ app.get('/definition/:word', async (req, res) => {
     if (data.length > 0) {
       return res.status(200).json(data);
     } else {
-      // if there is no root form found, try the original word
+
       const originalWordResponse = await fetch(`https://api.wordnik.com/v4/word.json/${req.params.word}/definitions?limit=3&includeRelated=false&sourceDictionaries=ahd-5&useCanonical=false&includeTags=false&api_key=${WORDNIK_API_KEY}`);
       const originalWordData = await originalWordResponse.json();
       res.status(200).json(originalWordData);
@@ -173,7 +161,7 @@ app.get('/pronunciation/:word', async (req, res) => {
     if (data.length > 0) {
       return res.status(200).json(data);
     } else {
-      // if there is no root form found, try the original word
+
       const originalWordResponse = await fetch(`https://api.wordnik.com/v4/word.json/${req.params.word}/pronunciations?useCanonical=false&sourceDictionary=ahd-5&typeFormat=ahd-5&limit=2&api_key=${WORDNIK_API_KEY}`);
       const originalWordData = await originalWordResponse.json();
       res.status(200).json(originalWordData);
