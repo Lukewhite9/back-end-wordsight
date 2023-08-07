@@ -9,18 +9,21 @@ const client = new Client();
 const db = new Database(process.env.REPLIT_DB_URL);
 const app = express();
 const natural = require('natural');
+const cache = require('memory-cache');
 
 const { WORDNIK_API_KEY } = process.env;
 
 app.use(cors());
 app.use(express.json());
 
+function generateEntryId(date) {
+  return `leaderboard-${date}-${Date.now().toString()}`;
+}
+
 app.post('/leaderboard', async (req, res) => {
   try {
     const { name, score, time, date, version } = req.body;
-    console.log('Received leaderboard entry:', { name, score, time, date, version });
-
-    const entryId = generateEntryId();
+    const entryId = generateEntryId(date);
 
     const entry = {
       name: name || null,
@@ -29,14 +32,12 @@ app.post('/leaderboard', async (req, res) => {
       date,
       version
     };
-
+    
     await db.set(entryId, entry);
-
-    console.log('Leaderboard entry added successfully:', entryId);
-
+    cache.del(date);  // Clear cache for the date to ensure freshness
+    
     return res.status(201).json({ message: 'Leaderboard entry added successfully' });
   } catch (error) {
-    console.error('Error adding leaderboard entry:', error);
     return res.status(500).json({ message: 'Failed to add leaderboard entry' });
   }
 });
@@ -44,27 +45,30 @@ app.post('/leaderboard', async (req, res) => {
 app.get('/leaderboard', async (req, res) => {
   try {
     const { date } = req.query;
-    const keys = await db.list();
-    const scoresPromises = keys.map(key => db.get(key));
-    const scores = await Promise.all(scoresPromises);
-    const filteredScores = scores.filter(score => score.date === date);
+    
+    let response = cache.get(date);  // Check cache first
 
-    const response = filteredScores.map(score => ({
-      name: score.name,
-      score: score.score,
-      time: score.time,
-      date: score.date,
-      version: score.version
-    }));
+    if (!response) {
+      const keys = await db.list(`leaderboard-${date}-`);
+      const scoresPromises = keys.map(key => db.get(key));
+      const scores = await Promise.all(scoresPromises);
 
+      response = scores.map(score => ({
+        name: score.name,
+        score: score.score,
+        time: score.time,
+        date: score.date,
+        version: score.version
+      }));
+
+      cache.put(date, response, 600000);  // Cache for 10 minutes
+    }
+    
     res.status(200).json(response);
   } catch (error) {
-    console.error('Error fetching leaderboard scores:', error);
     return res.status(500).json({ message: 'Failed to fetch leaderboard scores' });
   }
 });
-
-
 
 
 app.get('/wordpairs', async (req, res) => {
