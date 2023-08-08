@@ -9,17 +9,20 @@ const client = new Client();
 const db = new Database(process.env.REPLIT_DB_URL);
 const app = express();
 const natural = require('natural');
+
 const { WORDNIK_API_KEY } = process.env;
 
 app.use(cors());
 app.use(express.json());
 
+function generateEntryId(date) {
+  return `leaderboard-${date}-${Date.now().toString()}`;
+}
+
 app.post('/leaderboard', async (req, res) => {
   try {
     const { name, score, time, date, version } = req.body;
-    console.log('Received leaderboard entry:', { name, score, time, date, version });
-
-    const entryId = generateEntryId();
+    const entryId = generateEntryId(date);
 
     const entry = {
       name: name || null,
@@ -28,14 +31,12 @@ app.post('/leaderboard', async (req, res) => {
       date,
       version
     };
-
+    
     await db.set(entryId, entry);
-
-    console.log('Leaderboard entry added successfully:', entryId);
-
+    cache.del(date);  // Clear cache for the date to ensure freshness
+    
     return res.status(201).json({ message: 'Leaderboard entry added successfully' });
   } catch (error) {
-    console.error('Error adding leaderboard entry:', error);
     return res.status(500).json({ message: 'Failed to add leaderboard entry' });
   }
 });
@@ -43,6 +44,7 @@ app.post('/leaderboard', async (req, res) => {
 app.get('/leaderboard', async (req, res) => {
   try {
     const { date } = req.query;
+
     console.log('Leaderboard route queried with date:', date); 
     const keys = await db.list();
     const scoresPromises = keys.map(key => db.get(key));
@@ -57,14 +59,12 @@ app.get('/leaderboard', async (req, res) => {
       version: score.version
     }));
 
+
     res.status(200).json(response);
   } catch (error) {
-    console.error('Error fetching leaderboard scores:', error);
     return res.status(500).json({ message: 'Failed to fetch leaderboard scores' });
   }
 });
-
-
 
 
 app.get('/wordpairs', async (req, res) => {
