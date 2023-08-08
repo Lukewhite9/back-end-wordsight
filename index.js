@@ -44,6 +44,7 @@ app.post('/leaderboard', async (req, res) => {
 app.get('/leaderboard', async (req, res) => {
   try {
     const { date } = req.query;
+    console.log('Leaderboard route queried with date:', date); 
     const keys = await db.list();
     const scoresPromises = keys.map(key => db.get(key));
     const scores = await Promise.all(scoresPromises);
