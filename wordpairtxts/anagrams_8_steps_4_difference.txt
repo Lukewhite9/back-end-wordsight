@@ -1,0 +1,15 @@
+serves,scene: Path 1 (length 8): serves,serve,verse,terse,tense,tens,sent,scent,scene, Path 2 (length 4): serves,seres,sere,sene,scene
+epic,gay: Path 1 (length 8): epic,epics,spice,slice,lice,lace,lacy,lay,gay, Path 2 (length 4): epic,pic,pac,pay,gay
+part,edit: Path 1 (length 8): part,mart,mare,mate,mite,smite,emits,edits,edit, Path 2 (length 4): part,art,ait,adit,edit
+local,pick: Path 1 (length 8): local,focal,foal,loaf,leaf,leak,peak,peck,pick, Path 2 (length 4): local,loca,lock,lick,pick
+scene,stolen: Path 1 (length 8): scene,scent,scant,slant,slat,slate,stale,stole,stolen, Path 2 (length 4): scene,scone,stone,stole,stolen
+acres,carol: Path 1 (length 8): acres,aces,ace,act,cat,coat,coal,coral,carol, Path 2 (length 4): acres,acre,care,carl,carol
+trials,bread: Path 1 (length 8): trials,trails,rails,raids,raid,rid,red,bred,bread, Path 2 (length 4): trials,triads,treads,breads,bread
+metals,focal: Path 1 (length 8): metals,meals,deals,deal,deaf,leaf,loaf,foal,focal, Path 2 (length 4): metals,metal,fetal,fecal,focal
+nodes,angels: Path 1 (length 8): nodes,codes,cones,canes,manes,manges,mangers,angers,angels, Path 2 (length 4): nodes,anodes,anoles,angles,angels
+scene,those: Path 1 (length 8): scene,scent,cent,cant,cane,case,chase,chose,those, Path 2 (length 4): scene,scone,shone,shote,those
+prayers,meters: Path 1 (length 8): prayers,payers,papers,tapers,tapes,pates,mates,metes,meters, Path 2 (length 4): prayers,payers,paters,maters,meters
+dozens,owners: Path 1 (length 8): dozens,dozes,does,odes,owes,owed,owned,owner,owners, Path 2 (length 4): dozens,dozers,dowers,downers,owners
+low,edit: Path 1 (length 8): low,lot,lit,sit,site,smite,emits,edits,edit, Path 2 (length 4): low,dow,dot,dit,edit
+poems,camel: Path 1 (length 8): poems,poem,poet,pet,pat,cat,cam,came,camel, Path 2 (length 4): poems,pomes,comes,cames,camel
+badly,based: Path 1 (length 8): badly,madly,manly,many,mane,cane,caned,cased,based, Path 2 (length 4): badly,baldy,bald,baled,based

@@ -1,6 +1,0 @@
-hat,radio: Path 1 (length 8): hat,hats,pats,paths,pathos,patios,patio,ratio,radio, Path 2 (length 4): hat,rat,rato,ratio,radio
-agree,frog: Path 1 (length 8): agree,agreed,greed,freed,feed,fee,foe,fog,frog, Path 2 (length 4): agree,gree,free,froe,frog
-ware,dodge: Path 1 (length 8): ware,bare,bared,barged,bagged,bogged,dogged,dodged,dodge, Path 2 (length 4): ware,dare,dore,doge,dodge
-further,bother: Path 1 (length 8): further,farther,father,fatter,patter,potter,otter,other,bother, Path 2 (length 4): further,farther,father,bather,bother
-parent,gate: Path 1 (length 8): parent,patent,latent,lament,lamest,gamest,games,game,gate, Path 2 (length 4): parent,patent,paten,pate,gate
-stamp,babes: Path 1 (length 8): stamp,stamps,swamps,swaps,saps,pass,bass,bases,babes, Path 2 (length 4): stamp,tamps,tames,tabes,babes

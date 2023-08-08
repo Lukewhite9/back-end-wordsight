@@ -1,0 +1,6 @@
+foster,copper: Path 1 (length 7): foster,fortes,fores,cores,copes,coped,copped,copper, Path 2 (length 3): foster,coster,copter,copper
+header,lesser: Path 1 (length 7): header,headed,leaded,leased,leases,lenses,lessen,lesser, Path 2 (length 3): header,leader,leaser,lesser
+pop,epic: Path 1 (length 7): pop,pope,pipe,pike,spike,spice,epics,epic, Path 2 (length 3): pop,pip,pic,epic
+carol,calls: Path 1 (length 7): carol,carols,corals,coals,goals,gals,galls,calls, Path 2 (length 3): carol,carl,call,calls
+users,serve: Path 1 (length 7): users,uses,sues,sees,seer,sever,server,serve, Path 2 (length 3): users,sers,sere,serve
+gel,devil: Path 1 (length 7): gel,eel,heel,heal,veal,veil,evil,devil, Path 2 (length 3): gel,del,deil,devil

@@ -1,8 +1,0 @@
-this,cups: Path 1 (length 5): this,his,hes,hues,cues,cups, Path 2 (length 3): this,tuis,tups,cups
-two,taxi: Path 1 (length 5): two,too,ton,tan,tax,taxi, Path 2 (length 3): two,tao,tax,taxi
-bias,case: Path 1 (length 5): bias,bids,bads,bade,base,case, Path 2 (length 3): bias,bas,base,case
-link,clips: Path 1 (length 5): link,clink,chink,chins,chips,clips, Path 2 (length 3): link,lins,lips,clips
-arising,posing: Path 1 (length 5): arising,rising,riling,piling,poling,posing, Path 2 (length 3): arising,prising,poising,posing
-heel,sweet: Path 1 (length 5): heel,feel,feet,fleet,sleet,sweet, Path 2 (length 3): heel,weel,weet,sweet
-plates,plot: Path 1 (length 5): plates,pates,pate,pat,pot,plot, Path 2 (length 3): plates,plate,plat,plot
-gore,moral: Path 1 (length 5): gore,more,mode,model,modal,moral, Path 2 (length 3): gore,more,mora,moral

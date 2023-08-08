@@ -1,4 +1,0 @@
-drill,died: Path 1 (length 6): drill,dill,dial,deal,dead,deed,died, Path 2 (length 3): drill,dill,diel,died
-hours,loud: Path 1 (length 6): hours,fours,four,for,ford,lord,loud, Path 2 (length 3): hours,hour,lour,loud
-copper,over: Path 1 (length 6): copper,copier,copies,copes,coves,cover,over, Path 2 (length 3): copper,coper,cover,over
-sticks,skirt: Path 1 (length 6): sticks,sicks,sick,sic,sit,skit,skirt, Path 2 (length 3): sticks,stick,stirk,skirt
