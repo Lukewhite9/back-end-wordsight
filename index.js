@@ -9,7 +9,6 @@ const client = new Client();
 const db = new Database(process.env.REPLIT_DB_URL);
 const app = express();
 const natural = require('natural');
-
 const { WORDNIK_API_KEY } = process.env;
 
 app.use(cors());
