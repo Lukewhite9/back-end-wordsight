@@ -9,7 +9,6 @@ const client = new Client();
 const db = new Database(process.env.REPLIT_DB_URL);
 const app = express();
 const natural = require('natural');
-const cache = require('memory-cache');
 
 const { WORDNIK_API_KEY } = process.env;
 
@@ -45,25 +44,22 @@ app.post('/leaderboard', async (req, res) => {
 app.get('/leaderboard', async (req, res) => {
   try {
     const { date } = req.query;
-    
-    let response = cache.get(date);  // Check cache first
 
-    if (!response) {
-      const keys = await db.list(`leaderboard-${date}-`);
-      const scoresPromises = keys.map(key => db.get(key));
-      const scores = await Promise.all(scoresPromises);
+    console.log('Leaderboard route queried with date:', date); 
+    const keys = await db.list();
+    const scoresPromises = keys.map(key => db.get(key));
+    const scores = await Promise.all(scoresPromises);
+    const filteredScores = scores.filter(score => score.date === date);
 
-      response = scores.map(score => ({
-        name: score.name,
-        score: score.score,
-        time: score.time,
-        date: score.date,
-        version: score.version
-      }));
+    const response = filteredScores.map(score => ({
+      name: score.name,
+      score: score.score,
+      time: score.time,
+      date: score.date,
+      version: score.version
+    }));
 
-      cache.put(date, response, 600000);  // Cache for 10 minutes
-    }
-    
+
     res.status(200).json(response);
   } catch (error) {
     return res.status(500).json({ message: 'Failed to fetch leaderboard scores' });
