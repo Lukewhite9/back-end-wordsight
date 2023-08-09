@@ -22,7 +22,7 @@ function generateEntryId(date) {
 app.post('/leaderboard', async (req, res) => {
   try {
     const { name, score, time, date, version } = req.body;
-    const entryId = generateEntryId(date);
+    const entryId = `${date}-${generateEntryId()}`;  // Using date as prefix
 
     const entry = {
       name: name || null,
@@ -33,7 +33,6 @@ app.post('/leaderboard', async (req, res) => {
     };
     
     await db.set(entryId, entry);
-    cache.del(date);  // Clear cache for the date to ensure freshness
     
     return res.status(201).json({ message: 'Leaderboard entry added successfully' });
   } catch (error) {
@@ -44,14 +43,16 @@ app.post('/leaderboard', async (req, res) => {
 app.get('/leaderboard', async (req, res) => {
   try {
     const { date } = req.query;
-
     console.log('Leaderboard route queried with date:', date); 
-    const keys = await db.list();
+
+    // Fetch keys with the date prefix
+    const keys = await db.list(date);
+
+    // Fetch scores for all the matched keys
     const scoresPromises = keys.map(key => db.get(key));
     const scores = await Promise.all(scoresPromises);
-    const filteredScores = scores.filter(score => score.date === date);
 
-    const response = filteredScores.map(score => ({
+    const response = scores.map(score => ({
       name: score.name,
       score: score.score,
       time: score.time,
@@ -59,12 +60,13 @@ app.get('/leaderboard', async (req, res) => {
       version: score.version
     }));
 
-
     res.status(200).json(response);
   } catch (error) {
     return res.status(500).json({ message: 'Failed to fetch leaderboard scores' });
   }
 });
+
+
 
 
 app.get('/wordpairs', async (req, res) => {
