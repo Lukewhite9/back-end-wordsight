@@ -22,7 +22,8 @@ function generateEntryId(date) {
 app.post('/leaderboard', async (req, res) => {
   try {
     const { name, score, time, date, version } = req.body;
-    const entryId = `${date}-${generateEntryId()}`;  // Using date as prefix
+    const entryId = `${date}-${generateEntryId()}`;
+    console.log(`Leaderboard entry being added for: ${name} with score: ${score}, time: ${time}, date: ${date}, and version: ${version}`);
 
     const entry = {
       name: name || null,
@@ -31,9 +32,9 @@ app.post('/leaderboard', async (req, res) => {
       date,
       version
     };
-    
+
     await db.set(entryId, entry);
-    
+
     return res.status(201).json({ message: 'Leaderboard entry added successfully' });
   } catch (error) {
     return res.status(500).json({ message: 'Failed to add leaderboard entry' });
@@ -43,7 +44,7 @@ app.post('/leaderboard', async (req, res) => {
 app.get('/leaderboard', async (req, res) => {
   try {
     const { date } = req.query;
-    console.log('Leaderboard route queried with date:', date); 
+    console.log('Leaderboard route queried with date:', date);
 
     // Fetch keys with the date prefix
     const keys = await db.list(date);
