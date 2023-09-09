@@ -136,14 +136,14 @@ app.get('/definition/:word', async (req, res) => {
 
     const word = natural.PorterStemmer.stem(req.params.word);
 
-    const response = await fetch(`https://api.wordnik.com/v4/word.json/${word}/definitions?limit=3&includeRelated=false&sourceDictionaries=wiktionary&useCanonical=false&includeTags=false&api_key=${WORDNIK_API_KEY}`);
+    const response = await fetch(`https://api.wordnik.com/v4/word.json/${word}/definitions?limit=3&includeRelated=false&sourceDictionaries=all&useCanonical=false&includeTags=false&api_key=${WORDNIK_API_KEY}`);
     const data = await response.json();
 
     if (data.length > 0) {
       return res.status(200).json(data);
     } else {
 
-      const originalWordResponse = await fetch(`https://api.wordnik.com/v4/word.json/${req.params.word}/definitions?limit=3&includeRelated=false&sourceDictionaries=wiktionary&useCanonical=false&includeTags=false&api_key=${WORDNIK_API_KEY}`);
+      const originalWordResponse = await fetch(`https://api.wordnik.com/v4/word.json/${req.params.word}/definitions?limit=3&includeRelated=false&sourceDictionaries=all&useCanonical=false&includeTags=false&api_key=${WORDNIK_API_KEY}`);
       const originalWordData = await originalWordResponse.json();
       res.status(200).json(originalWordData);
     }
