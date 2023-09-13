@@ -114,12 +114,12 @@ async function main() {
             start_word: pair.start_word,
             goal_word: pair.goal_word,
             path_length: pair.path_length,
-            best_path_length: pair.best_path_length,
-            best_path_words: pair.best_path_words
+            best_possible_length: pair.best_possible_length,
+            best_possible_words: pair.best_possible_words
           });
 
           console.log(
-            `Added pair ${pair.start_word}-${pair.goal_word} with path length ${pair.path_length}, best path length ${pair.best_path_length}, and best path words ${pair.best_path_words} for round ${round} on ${formatDate(startingDate)}`
+            `Added pair ${pair.start_word}-${pair.goal_word} with path length ${pair.path_length}, best possible length ${pair.best_possible_length}, and best possible words ${pair.best_possible_words} for round ${round} on ${formatDate(startingDate)}`
           );
 
           seenPairs.add(`${pair.start_word}-${pair.goal_word}`);
