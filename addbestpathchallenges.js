@@ -69,8 +69,8 @@ function parseTxtToJson(txtFile) {
         start_word,
         goal_word,
         path_length: path1Length,
-        best_path_length: path2Length,
-        best_path_words: path2Words,
+        best_possible_length: path2Length,
+        best_possible_words: path2Words,
       };
     } else {
       return null;
