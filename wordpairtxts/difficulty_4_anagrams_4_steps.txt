@@ -1,0 +1,4 @@
+ref,ears: Path 1 (length 4): ref,res,ares,eras,ears, Path 2 (length 3): ref,res,ers,ears
+this,spot: Path 1 (length 4): this,thus,shut,shot,spot, Path 2 (length 3): this,shit,shot,spot
+web,don: Path 1 (length 4): web,wed,dew,den,don, Path 2 (length 3): web,deb,den,don
+user,son: Path 1 (length 4): user,use,sue,sun,son, Path 2 (length 3): user,ser,sen,son

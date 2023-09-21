@@ -1,0 +1,2 @@
+sing,sight: Path 1 (length 3): sing,sign,sigh,sight, Path 2 (length 3): sing,sign,sigh,sight
+sons,spas: Path 1 (length 3): sons,sops,saps,spas, Path 2 (length 3): sons,sans,saps,spas

@@ -1,0 +1,9 @@
+host,jobs: Path 1 (length 4): host,cost,cots,cobs,jobs, Path 2 (length 3): host,hots,hobs,jobs
+rats,sale: Path 1 (length 4): rats,hats,hate,hale,sale, Path 2 (length 3): rats,eats,sate,sale
+dot,load: Path 1 (length 4): dot,dog,god,goad,load, Path 2 (length 3): dot,doat,toad,load
+cart,day: Path 1 (length 4): cart,art,rat,ray,day, Path 2 (length 3): cart,car,cay,day
+cage,acts: Path 1 (length 4): cage,age,ace,aces,acts, Path 2 (length 3): cage,cate,cats,acts
+cal,bug: Path 1 (length 4): cal,cab,gab,bag,bug, Path 2 (length 3): cal,bal,bag,bug
+farm,lay: Path 1 (length 4): farm,arm,ram,ray,lay, Path 2 (length 3): farm,far,fay,lay
+are,tab: Path 1 (length 4): are,ape,tape,tap,tab, Path 2 (length 3): are,ate,tae,tab
+lap,ace: Path 1 (length 4): lap,cap,cape,ape,ace, Path 2 (length 3): lap,alp,ale,ace

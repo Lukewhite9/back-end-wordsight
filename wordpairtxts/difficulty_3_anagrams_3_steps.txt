@@ -1,0 +1,16 @@
+bad,gas: Path 1 (length 3): bad,bag,gab,gas, Path 2 (length 2): bad,bas,gas
+done,sold: Path 1 (length 3): done,dole,sole,sold, Path 2 (length 3): done,dole,dols,sold
+hate,ear: Path 1 (length 3): hate,hat,eat,ear, Path 2 (length 3): hate,eath,eat,ear
+nose,roles: Path 1 (length 3): nose,noes,roes,roles, Path 2 (length 3): nose,noes,roes,roles
+brave,dare: Path 1 (length 3): brave,rave,rare,dare, Path 2 (length 3): brave,brae,bare,dare
+cap,place: Path 1 (length 3): cap,cape,pace,place, Path 2 (length 3): cap,cape,pace,place
+seem,trees: Path 1 (length 3): seem,sees,tees,trees, Path 2 (length 3): seem,seer,rees,trees
+least,rats: Path 1 (length 3): least,east,eats,rats, Path 2 (length 3): least,east,eats,rats
+fair,diary: Path 1 (length 3): fair,fairy,dairy,diary, Path 2 (length 3): fair,fairy,dairy,diary
+bored,rob: Path 1 (length 3): bored,bore,robe,rob, Path 2 (length 3): bored,bore,robe,rob
+fire,gift: Path 1 (length 3): fire,rife,rift,gift, Path 2 (length 3): fire,rife,rift,gift
+meet,tied: Path 1 (length 3): meet,teem,teed,tied, Path 2 (length 3): meet,deet,diet,tied
+late,feet: Path 1 (length 3): late,fate,fete,feet, Path 2 (length 3): late,fate,fete,feet
+fires,friend: Path 1 (length 3): fires,fired,fried,friend, Path 2 (length 3): fires,fired,fried,friend
+now,bin: Path 1 (length 3): now,won,win,bin, Path 2 (length 3): now,nob,nib,bin
+ease,mats: Path 1 (length 3): ease,east,eats,mats, Path 2 (length 3): ease,east,eats,mats
