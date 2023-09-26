@@ -83,8 +83,8 @@ function parseTxtToJson(txtFile) {
 
 
 async function main() {
-  let version = 9;
-  let startingDate = new Date('2023-09-24');
+  let version = 3;
+  let startingDate = new Date('2023-09-26');
   let daysProcessed = 0;
 
   while (true) {
