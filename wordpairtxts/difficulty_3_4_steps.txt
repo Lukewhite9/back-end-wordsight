@@ -1,0 +1,16 @@
+wake,weak: Path 1 (length 4): wake,wane,wan,wean,weak Path 2 (length 2): wake,weka,weak
+copy,polo: Path 1 (length 4): copy,cope,lope,pole,polo Path 2 (length 3): copy,coly,poly,polo
+work,opt: Path 1 (length 4): work,pork,port,pot,opt Path 2 (length 3): work,wort,ort,opt
+plain,lean: Path 1 (length 4): plain,lain,loin,loan,lean Path 2 (length 3): plain,elain,elan,lean
+opt,work: Path 1 (length 4): opt,pot,port,pork,work Path 2 (length 3): opt,ort,wort,work
+pets,ease: Path 1 (length 4): pets,pats,eats,east,ease Path 2 (length 3): pets,peas,pease,ease
+slot,this: Path 1 (length 4): slot,shot,shut,thus,this Path 2 (length 3): slot,shot,shit,this
+buy,cube: Path 1 (length 4): buy,bud,dub,cub,cube Path 2 (length 3): buy,bub,cub,cube
+after,date: Path 1 (length 4): after,alter,later,late,date Path 2 (length 3): after,dafter,dater,date
+gold,dolls: Path 1 (length 4): gold,sold,soled,doles,dolls Path 2 (length 3): gold,sold,dols,dolls
+lost,boats: Path 1 (length 4): lost,cost,coast,boast,boats Path 2 (length 3): lost,lots,bots,boats
+tear,tapes: Path 1 (length 4): tear,tar,tap,tape,tapes Path 2 (length 3): tear,teas,tepas,tapes
+lines,sales: Path 1 (length 4): lines,lanes,lades,sades,sales Path 2 (length 3): lines,lanes,lases,sales
+docs,ford: Path 1 (length 4): docs,cods,cod,cord,ford Path 2 (length 3): docs,dors,sord,ford
+cap,packs: Path 1 (length 4): cap,cape,capes,paces,packs Path 2 (length 3): cap,caps,pacs,packs
+door,woods: Path 1 (length 4): door,boor,boos,woos,woods Path 2 (length 3): door,doors,roods,woods

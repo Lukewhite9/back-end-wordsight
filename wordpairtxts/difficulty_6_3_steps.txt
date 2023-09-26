@@ -1,0 +1,5 @@
+leon,lens: Path 1 (length 3): leon,lean,leans,lens Path 2 (length 2): leon,leno,lens
+rider,timer: Path 1 (length 3): rider,direr,dimer,timer Path 2 (length 2): rider,rimer,timer
+pool,moon: Path 1 (length 3): pool,loop,loon,moon Path 2 (length 2): pool,mool,moon
+bits,acts: Path 1 (length 3): bits,bats,cats,acts Path 2 (length 2): bits,aits,acts
+mag,gem: Path 1 (length 3): mag,mug,gum,gem Path 2 (length 2): mag,gam,gem

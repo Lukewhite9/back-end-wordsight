@@ -5,11 +5,11 @@ const db = new Database();
 
 // File patterns for each round
 const filePatterns = {
-  1: glob.sync("wordpairtxts/anagrams_4_steps_1_difference.txt").concat(glob.sync("wordpairtxts/anagrams_5_steps_*_difference.txt")),
-  2: glob.sync("wordpairtxts/anagrams_4_steps_*_difference.txt").concat(glob.sync("wordpairtxts/anagrams_5_steps_*_difference.txt")),
-  3: glob.sync("wordpairtxts/anagrams_5_steps_*_difference.txt"),
-  4: glob.sync("wordpairtxts/anagrams_5_steps_*_difference.txt").concat(glob.sync("wordpairtxts/anagrams_6_steps_*_difference.txt")),
-  5: glob.sync("wordpairtxts/anagrams_6_steps_*_difference.txt").concat(glob.sync("wordpairtxts/anagrams_7_steps_*_difference.txt")).concat(glob.sync("wordpairtxts/anagrams_8_steps_*_difference.txt")),
+  1: glob.sync("wordpairtxts/difficulty_0_[3-4]_steps.txt"),
+  2: glob.sync("wordpairtxts/difficulty_[0-2]_[3-4]_steps.txt"),
+  3: glob.sync("wordpairtxts/difficulty_[1-4]_[4-6]_steps.txt"),
+  4: glob.sync("wordpairtxts/difficulty_[3-5]_[4-7]_steps.txt"),
+  5: glob.sync("wordpairtxts/difficulty_[4-6]_[5-8]_steps.txt"),
 };
 
 let seenPairs = new Set();
@@ -83,8 +83,8 @@ function parseTxtToJson(txtFile) {
 
 
 async function main() {
-  let version = 4;
-  let startingDate = new Date('2023-09-12');
+  let version = 9;
+  let startingDate = new Date('2023-09-24');
   let daysProcessed = 0;
 
   while (true) {
