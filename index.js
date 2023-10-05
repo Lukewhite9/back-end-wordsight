@@ -1,11 +1,14 @@
 const express = require('express');
-const fetch = require('node-fetch');
-const { Client } = require('replit-storage');
+let fetch;
+
+(async () => {
+  fetch = await import('node-fetch').then(module => module.default);
+})();
+
 const Database = require('@replit/database');
 const cors = require('cors');
 const fs = require('fs');
 const path = require('path');
-const client = new Client();
 const db = new Database(process.env.REPLIT_DB_URL);
 const app = express();
 const natural = require('natural');
