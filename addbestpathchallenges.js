@@ -5,11 +5,9 @@ const db = new Database();
 
 // File patterns for each round
 const filePatterns = {
-  1: glob.sync("wordpairtxts/difficulty_0_[3-4]_steps.txt"),
-  2: glob.sync("wordpairtxts/difficulty_[0-2]_[3-4]_steps.txt"),
-  3: glob.sync("wordpairtxts/difficulty_[1-4]_[4-6]_steps.txt"),
-  4: glob.sync("wordpairtxts/difficulty_[3-5]_[4-7]_steps.txt"),
-  5: glob.sync("wordpairtxts/difficulty_[4-6]_[5-8]_steps.txt"),
+  1: glob.sync("wordpairtxts/difficulty_[0-1]_[3-4]_steps.txt"),
+  2: glob.sync("wordpairtxts/difficulty_[1-4]_[4-6]_steps.txt"),
+  3: glob.sync("wordpairtxts/difficulty_[4-6]_[5-8]_steps.txt"),
 };
 
 let seenPairs = new Set();
@@ -83,8 +81,8 @@ function parseTxtToJson(txtFile) {
 
 
 async function main() {
-  let version = 3;
-  let startingDate = new Date('2023-09-26');
+  let version = 4;
+  let startingDate = new Date('2023-10-12');
   let daysProcessed = 0;
 
   while (true) {
@@ -93,7 +91,7 @@ async function main() {
       rounds: [],
     };
 
-    for (let round = 1; round <= 5; round++) {
+    for (let round = 1; round <= 3; round++) {
       let files = shuffle(filePatterns[round]);
       let pairAdded = false;
 
@@ -138,7 +136,7 @@ async function main() {
       }
     }
 
-    if (gameData.rounds.length < 5) {
+    if (gameData.rounds.length < 3) {
       console.log(`Couldn't find enough unique pairs for ${formatDate(startingDate)}. Stopping.`);
       break;
     }
