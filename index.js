@@ -179,9 +179,37 @@ app.get('/pronunciation/:word', async (req, res) => {
   }
 });
 
+app.get('/wordlist', async (req, res) => {
+  try {
+    const filePath = path.join(__dirname, 'data', 'ospd.txt'); 
+    if (fs.existsSync(filePath)) {
+      const wordList = fs.readFileSync(filePath, 'utf8');
+      res.status(200).send(wordList);
+    } else {
+      res.status(404).send('Word list not found');
+    }
+  } catch (error) {
+    res.status(500).send('Failed to fetch word list');
+  }
+});
+
+app.get('/scowl35k', async (req, res) => {
+  try {
+    const filePath = path.join(__dirname, 'data', 'SCOWL35k.txt'); 
+    if (fs.existsSync(filePath)) {
+      const wordList = fs.readFileSync(filePath, 'utf8');
+      res.status(200).send(wordList);
+    } else {
+      res.status(404).send('SCOWL35k word list not found');
+    }
+  } catch (error) {
+    console.error('Error fetching SCOWL35k word list:', error);
+    res.status(500).send('Failed to fetch SCOWL35k word list');
+  }
+});
 
 
-app.listen(3000, () => {
+app.listen(8080, () => {
   console.log('Server is running on port 3000');
 });
 
