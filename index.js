@@ -179,6 +179,20 @@ app.get('/pronunciation/:word', async (req, res) => {
   }
 });
 
+app.get('/wordlist', async (req, res) => {
+  try {
+    const filePath = path.join(__dirname, 'data', 'ospd.txt'); 
+    if (fs.existsSync(filePath)) {
+      const wordList = fs.readFileSync(filePath, 'utf8');
+      res.status(200).send(wordList);
+    } else {
+      res.status(404).send('Word list not found');
+    }
+  } catch (error) {
+    console.error('Error fetching word list:', error);
+    res.status(500).send('Failed to fetch word list');
+  }
+});
 
 
 app.listen(3000, () => {
