@@ -1,7 +1,0 @@
-poem,over: Path 1 (length 6): poem,poet,pet,pen,open,oven,over Path 2 (length 5): poem,pome,come,comer,cover,over
-keen,very: Path 1 (length 6): keen,been,beer,veer,ever,every,very Path 2 (length 4): keen,kern,kerb,verb,very
-pick,campus: Path 1 (length 6): pick,pack,pace,cape,caps,camps,campus Path 2 (length 5): pick,pack,pacs,caps,camps,campus
-death,haven: Path 1 (length 6): death,heath,heat,hat,hate,have,haven Path 2 (length 4): death,eath,hate,have,haven
-vary,eyed: Path 1 (length 6): vary,very,every,ever,eve,eye,eyed Path 2 (length 5): vary,very,eery,eyre,eye,eyed
-tale,masters: Path 1 (length 6): tale,late,later,cater,caster,casters,masters Path 2 (length 5): tale,late,later,laster,lasters,masters
-poems,sofa: Path 1 (length 6): poems,poem,poet,port,sort,soft,sofa Path 2 (length 5): poems,poem,pome,some,soma,sofa

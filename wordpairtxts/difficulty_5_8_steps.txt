@@ -1,1 +1,0 @@
-donor,oval: Path 1 (length 8): donor,door,boor,boar,bar,par,pal,opal,oval Path 2 (length 6): donor,door,rood,road,orad,oral,oval

@@ -1,8 +1,0 @@
-gone,face: Path 1 (length 4): gone,cone,cane,cafe,face Path 2 (length 3): gone,gane,fane,face
-hold,door: Path 1 (length 4): hold,hood,mood,doom,door Path 2 (length 3): hold,hood,rood,door
-gas,box: Path 1 (length 4): gas,gab,bag,bog,box Path 2 (length 3): gas,bas,bos,box
-again,sail: Path 1 (length 4): again,gain,lain,nail,sail Path 2 (length 3): again,gain,sain,sail
-poem,hose: Path 1 (length 4): poem,poet,post,host,hose Path 2 (length 3): poem,pome,home,hose
-tell,tied: Path 1 (length 4): tell,till,tile,tide,tied Path 2 (length 3): tell,teel,teed,tied
-odd,pod: Path 1 (length 4): odd,add,dad,pad,pod Path 2 (length 3): odd,ods,pods,pod
-task,ate: Path 1 (length 4): task,ask,ark,are,ate Path 2 (length 3): task,tas,tae,ate

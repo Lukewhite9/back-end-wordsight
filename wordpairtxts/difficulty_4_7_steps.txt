@@ -1,8 +1,0 @@
-pulse,send: Path 1 (length 7): pulse,purse,parse,pare,pane,sane,sand,send Path 2 (length 5): pulse,puls,puns,duns,dens,send
-stocks,cute: Path 1 (length 7): stocks,socks,cocks,cock,cork,core,cure,cute Path 2 (length 6): stocks,socks,sucks,cusks,cuss,cuts,cute
-latter,aside: Path 1 (length 7): latter,later,late,lade,bade,bide,abide,aside Path 2 (length 6): latter,later,alter,alder,aider,aide,aside
-next,token: Path 1 (length 7): next,net,met,men,omen,women,woken,token Path 2 (length 6): next,neat,eat,tae,take,taken,token
-sauce,mouse: Path 1 (length 7): sauce,cause,case,cash,mash,mush,muse,mouse Path 2 (length 5): sauce,cause,carse,corse,morse,mouse
-sole,very: Path 1 (length 7): sole,hole,hale,hare,here,herb,verb,very Path 2 (length 5): sole,sale,vale,vela,vera,very
-rob,tribal: Path 1 (length 7): rob,rib,rid,raid,rail,trail,trial,tribal Path 2 (length 5): rob,rib,ria,rial,trial,tribal
-song,every: Path 1 (length 7): song,long,lone,love,lover,lever,ever,every Path 2 (length 6): song,sone,syne,eyne,eyre,eery,every

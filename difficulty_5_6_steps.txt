@@ -1,0 +1,17 @@
+poem,over: Path 1 (length 6): poem,poet,pet,pen,open,oven,over Path 2 (length 5): poem,pome,come,comer,cover,over
+keen,very: Path 1 (length 6): keen,been,beer,veer,ever,every,very Path 2 (length 4): keen,kern,kerb,verb,very
+pick,campus: Path 1 (length 6): pick,pack,pace,cape,caps,camps,campus Path 2 (length 5): pick,pack,pacs,caps,camps,campus
+death,haven: Path 1 (length 6): death,heath,heat,hat,hate,have,haven Path 2 (length 4): death,eath,hate,have,haven
+vary,eyed: Path 1 (length 6): vary,very,every,ever,eve,eye,eyed Path 2 (length 5): vary,very,eery,eyre,eye,eyed
+tale,masters: Path 1 (length 6): tale,late,later,cater,caster,casters,masters Path 2 (length 5): tale,late,later,laster,lasters,masters
+poems,sofa: Path 1 (length 6): poems,poem,poet,port,sort,soft,sofa Path 2 (length 5): poems,poem,pome,some,soma,sofa
+dirt,trends: Path 1 (length 6): dirt,diet,tied,teed,tend,tends,trends Path 2 (length 5): dirt,dint,dent,dents,tends,trends
+player,stable: Path 1 (length 6): player,layer,later,late,slate,stale,stable Path 2 (length 5): player,plater,plate,slate,stale,stable
+alter,trail: Path 1 (length 6): alter,later,late,tale,tall,tail,trail Path 2 (length 5): alter,artel,ariel,aril,rail,trail
+clear,lions: Path 1 (length 6): clear,clean,cleans,leans,loans,loins,lions Path 2 (length 5): clear,lear,leas,lens,liens,lions
+used,nurse: Path 1 (length 6): used,sued,cued,cue,cure,curse,nurse Path 2 (length 5): used,bused,buses,burses,burse,nurse
+nurses,sub: Path 1 (length 6): nurses,curses,cures,cubes,cube,cub,sub Path 2 (length 5): nurses,burses,burse,burs,bus,sub
+lists,filled: Path 1 (length 6): lists,lifts,lift,life,file,filed,filled Path 2 (length 5): lists,lilts,tills,fills,fille,filled
+spice,mask: Path 1 (length 6): spice,slice,slick,sick,sack,cask,mask Path 2 (length 5): spice,pice,mice,mace,mack,mask
+movie,metal: Path 1 (length 6): movie,move,mode,model,modal,medal,metal Path 2 (length 5): movie,move,mote,mate,meta,metal
+tank,waters: Path 1 (length 6): tank,talk,tale,late,later,water,waters Path 2 (length 5): tank,tans,tats,tates,taters,waters

@@ -78,16 +78,31 @@ function parseTxtToJson(txtFile) {
   return shuffle(wordPairs);
 }
 
+function formatDate(date, format = 'yyyy-MM-dd') {
+  let year = date.getFullYear();
+  let month = String(date.getMonth() + 1).padStart(2, '0');
+  let day = String(date.getDate()).padStart(2, '0');
 
+  if (format === 'MMddyyyy') {
+    return `${month}${day}${year}`;
+  }
+
+  return `${year}-${month}-${day}`;
+}
 
 async function main() {
   let version = 4;
-  let startingDate = new Date('2023-10-12');
+  let startingDate = new Date('2023-11-06');
   let daysProcessed = 0;
 
   while (true) {
-    let gameData = {
-      gameID: `version${version}-${formatDate(startingDate, 'yyyy-MM-dd')}`,
+    let gameDataDev = {
+      gameID: `dev-version${version}-${formatDate(startingDate, 'yyyy-MM-dd')}`,
+      rounds: [],
+    };
+
+    let gameDataProd = {
+      gameID: `prod-version${version}-${formatDate(startingDate, 'yyyy-MM-dd')}`,
       rounds: [],
     };
 
@@ -99,34 +114,32 @@ async function main() {
         let wordPairs = parseTxtToJson(file);
 
         for (let pair of wordPairs) {
-          const existingPairIndex = gameData.rounds.findIndex(
-            (roundData) => roundData.start_word === pair.start_word && roundData.goal_word === pair.goal_word
-          );
+          if (!seenPairs.has(`${pair.start_word}-${pair.goal_word}`)) {
+            seenPairs.add(`${pair.start_word}-${pair.goal_word}`);
 
-          if (existingPairIndex !== -1) {
-            continue;
+            let roundData = {
+              round_number: round,
+              start_word: pair.start_word,
+              goal_word: pair.goal_word,
+              path_length: pair.path_length,
+              best_possible_length: pair.best_possible_length,
+              best_possible_words: pair.best_possible_words
+            };
+
+            gameDataDev.rounds.push(roundData);
+            gameDataProd.rounds.push(roundData);
+
+            console.log(
+              `Added pair ${pair.start_word}-${pair.goal_word} with path length ${pair.path_length}, best possible length ${pair.best_possible_length}, and best possible words ${pair.best_possible_words} for round ${round} on ${formatDate(startingDate)} to both environments`
+            );
+
+            pairAdded = true;
+            break; 
           }
-
-          gameData.rounds.push({
-            round_number: round,
-            start_word: pair.start_word,
-            goal_word: pair.goal_word,
-            path_length: pair.path_length,
-            best_possible_length: pair.best_possible_length,
-            best_possible_words: pair.best_possible_words
-          });
-
-          console.log(
-            `Added pair ${pair.start_word}-${pair.goal_word} with path length ${pair.path_length}, best possible length ${pair.best_possible_length}, and best possible words ${pair.best_possible_words} for round ${round} on ${formatDate(startingDate)}`
-          );
-
-          seenPairs.add(`${pair.start_word}-${pair.goal_word}`);
-          pairAdded = true;
-          break;
         }
 
         if (pairAdded) {
-          break;
+          break; 
         }
       }
 
@@ -136,30 +149,20 @@ async function main() {
       }
     }
 
-    if (gameData.rounds.length < 3) {
+    if (gameDataDev.rounds.length === 3 && gameDataProd.rounds.length === 3) {
+      await db.set(gameDataDev.gameID, gameDataDev);
+      await db.set(gameDataProd.gameID, gameDataProd);
+
+      daysProcessed++;
+    } else {
       console.log(`Couldn't find enough unique pairs for ${formatDate(startingDate)}. Stopping.`);
       break;
     }
 
-    await db.set(gameData.gameID, gameData);
-
     startingDate.setDate(startingDate.getDate() + 1);
-    daysProcessed++;
   }
 
   console.log(`Finished processing. ${daysProcessed} complete days were processed.`);
-}
-
-function formatDate(date, format = 'yyyy-MM-dd') {
-  let year = date.getFullYear();
-  let month = String(date.getMonth() + 1).padStart(2, '0');
-  let day = String(date.getDate()).padStart(2, '0');
-
-  if (format === 'MMddyyyy') {
-    return `${month}${day}${year}`;
-  }
-
-  return `${year}-${month}-${day}`;
 }
 
 main();

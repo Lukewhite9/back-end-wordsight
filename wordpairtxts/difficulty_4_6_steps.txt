@@ -1,6 +1,0 @@
-rooms,mile: Path 1 (length 6): rooms,dooms,doom,mood,mold,mild,mile Path 2 (length 5): rooms,looms,mools,moils,mils,mile
-planes,texts: Path 1 (length 6): planes,lanes,lands,lends,tends,tents,texts Path 2 (length 5): planes,panes,paxes,taxes,texas,texts
-bin,urge: Path 1 (length 6): bin,bun,sun,sue,sure,surge,urge Path 2 (length 5): bin,bun,run,rue,grue,urge
-steam,jade: Path 1 (length 6): steam,seam,beam,bead,bad,bade,jade Path 2 (length 5): steam,seam,sea,sae,sade,jade
-sport,bonds: Path 1 (length 6): sport,port,fort,font,fond,bond,bonds Path 2 (length 5): sport,sort,tors,tods,bods,bonds
-breed,river: Path 1 (length 6): breed,bred,red,rid,ride,rider,river Path 2 (length 5): breed,brede,bride,ride,rider,river

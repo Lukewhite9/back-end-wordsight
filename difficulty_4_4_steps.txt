@@ -1,0 +1,7 @@
+reef,eye: Path 1 (length 4): reef,beef,bee,bye,eye Path 2 (length 3): reef,ree,ere,eye
+polo,lock: Path 1 (length 4): polo,pool,loop,look,lock Path 2 (length 3): polo,poco,loco,lock
+pace,mask: Path 1 (length 4): pace,cape,case,cask,mask Path 2 (length 3): pace,mace,mack,mask
+fool,proof: Path 1 (length 4): fool,foot,root,roof,proof Path 2 (length 3): fool,loof,poof,proof
+breed,ride: Path 1 (length 4): breed,bred,red,rid,ride Path 2 (length 3): breed,brede,bride,ride
+dual,lid: Path 1 (length 4): dual,deal,lead,lad,lid Path 2 (length 3): dual,dal,lad,lid
+state,type: Path 1 (length 4): state,spate,pate,tape,type Path 2 (length 3): state,tate,tape,type

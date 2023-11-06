@@ -1,2 +1,0 @@
-song,sole: Path 1 (length 4): song,long,lone,lose,sole, Path 2 (length 2): song,sone,sole
-space,scope: Path 1 (length 4): space,pace,cape,cope,scope, Path 2 (length 2): space,scape,scope

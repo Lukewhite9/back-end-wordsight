@@ -1,8 +1,0 @@
-oral,trick: Path 1 (length 8): oral,opal,pal,pale,pace,pack,pick,prick,trick Path 2 (length 6): oral,ora,orc,roc,rock,rick,trick
-cure,chief: Path 1 (length 8): cure,care,car,caw,cow,chow,chew,chef,chief Path 2 (length 6): cure,cire,cine,chine,chile,chiel,chief
-whose,deaths: Path 1 (length 8): whose,hose,hoe,hot,hat,heat,heath,death,deaths Path 2 (length 7): whose,hose,hoe,hae,hate,eath,death,deaths
-tower,skirt: Path 1 (length 8): tower,towed,owed,wed,wet,set,sit,skit,skirt Path 2 (length 7): tower,power,poker,piker,siker,skier,skirr,skirt
-france,folk: Path 1 (length 8): france,franc,frank,rank,rack,rock,cork,fork,folk Path 2 (length 7): france,franc,frank,rank,hank,honk,holk,folk
-hostels,mall: Path 1 (length 8): hostels,hostel,hosted,hasted,halted,haled,hale,hall,mall Path 2 (length 7): hostels,hosels,hosel,holes,hales,hale,hall,mall
-makers,stream: Path 1 (length 8): makers,maker,make,mate,mat,meat,team,steam,stream Path 2 (length 6): makers,makes,mates,satem,stem,steam,stream
-house,depth: Path 1 (length 8): house,horse,hoarse,hearse,hears,heats,heath,death,depth Path 2 (length 7): house,hose,hoe,hae,hate,eath,death,depth

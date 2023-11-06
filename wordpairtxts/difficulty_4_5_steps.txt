@@ -1,5 +1,0 @@
-honor,hood: Path 1 (length 5): honor,donor,door,doom,mood,hood Path 2 (length 4): honor,donor,door,rood,hood
-yield,wider: Path 1 (length 5): yield,field,filed,fired,wired,wider Path 2 (length 4): yield,wield,wiled,wired,wider
-breed,ridge: Path 1 (length 5): breed,bred,red,rid,ride,ridge Path 2 (length 4): breed,brede,bride,bridge,ridge
-urge,fee: Path 1 (length 5): urge,surge,sure,sue,see,fee Path 2 (length 4): urge,grue,gree,free,fee
-amp,march: Path 1 (length 5): amp,amps,maps,mars,marsh,march Path 2 (length 4): amp,map,mac,mach,march

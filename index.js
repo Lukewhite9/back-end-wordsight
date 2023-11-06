@@ -13,6 +13,7 @@ const db = new Database(process.env.REPLIT_DB_URL);
 const app = express();
 const natural = require('natural');
 
+const DB_ENV_PREFIX = process.env.REPLIT_DB_ENV || 'dev';
 const { WORDNIK_API_KEY } = process.env;
 
 app.use(cors());
@@ -22,10 +23,11 @@ function generateEntryId(date) {
   return `leaderboard-${date}-${Date.now().toString()}`;
 }
 
+
 app.post('/leaderboard', async (req, res) => {
   try {
     const { name, score, time, date, version } = req.body;
-    const entryId = `${date}-${generateEntryId()}`;
+    const entryId = `${DB_ENV_PREFIX}-${date}-${generateEntryId()}`;
     console.log(`Leaderboard entry being added for: ${name} with score: ${score}, time: ${time}, date: ${date}, and version: ${version}`);
 
     const entry = {
@@ -49,10 +51,7 @@ app.get('/leaderboard', async (req, res) => {
     const { date } = req.query;
     console.log('Leaderboard route queried with date:', date);
 
-    // Fetch keys with the date prefix
-    const keys = await db.list(date);
-
-    // Fetch scores for all the matched keys
+    const keys = await db.list(`${DB_ENV_PREFIX}-${date}`);
     const scoresPromises = keys.map(key => db.get(key));
     const scores = await Promise.all(scoresPromises);
 
@@ -70,15 +69,12 @@ app.get('/leaderboard', async (req, res) => {
   }
 });
 
-
-
-
 app.get('/wordpairs', async (req, res) => {
   try {
     const { date, version } = req.query;
 
-    const keys = await db.list();
-    const gameKeys = keys.filter(key => key.includes(`version${version}-${date}`));
+    const keys = await db.list(`${DB_ENV_PREFIX}-version${version}-${date}`);
+    const gameKeys = keys.filter(key => key.includes(`${DB_ENV_PREFIX}-version${version}-${date}`));
 
     if (!gameKeys || gameKeys.length === 0) {
       return res.status(404).json({ message: 'No games found for the specified date' });
@@ -108,7 +104,6 @@ app.get('/randomwordpair', async (req, res) => {
       .filter(file => file.endsWith('_steps.txt'))
       .sort((a, b) => parseInt(a) - parseInt(b));
 
-    console.log(filenames)
     const fileIndex = Math.floor(difficultyNumber * round / 2);
     const filename = filenames[fileIndex];
 
@@ -129,30 +124,19 @@ app.get('/randomwordpair', async (req, res) => {
   }
 });
 
-const fetchDefinition = async (word, sourceDictionary) => {
-  const response = await fetch(`https://api.wordnik.com/v4/word.json/${word}/definitions?limit=3&includeRelated=false&sourceDictionaries=${sourceDictionary}&useCanonical=false&includeTags=false&api_key=${WORDNIK_API_KEY}`);
-  if (response.status !== 200) {
-    throw new Error(`Received ${response.status} status`);
-  }
-  const data = await response.json();
-  return data;
-};
-app.get('/definition/:word', async (req, res) => {
+app.get('/fetchDefinition/:word', async (req, res) => {
+  const word = req.params.word;
   try {
-    const word = natural.PorterStemmer.stem(req.params.word);
-    try {
-      const data = await fetchDefinition(word, 'ahd5');
-      return res.status(200).json(data);
-    } catch (error) {
+    const url = `http://api.wordnik.com:80/v4/word.json/${word}/definitions?limit=1&includeRelated=false&useCanonical=false&includeTags=false&api_key=${WORDNIK_API_KEY}`;
+    const response = await fetch(url);
+    const definitions = await response.json();
+
+    if (!definitions.length) {
+      return res.status(404).json({ message: 'No definition found for the word' });
     }
-    try {
-      const data = await fetchDefinition(word, 'wiktionary');
-      return res.status(200).json(data);
-    } catch (error) {
-    }
-    const data = await fetchDefinition(word, 'all');
-    return res.status(200).json(data);
+    return res.status(200).json({ definition: definitions[0].text });
   } catch (error) {
+    console.error('Error fetching definition:', error);
     return res.status(500).json({ message: 'Failed to fetch definition' });
   }
 });

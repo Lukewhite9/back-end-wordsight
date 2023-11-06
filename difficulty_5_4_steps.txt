@@ -1,0 +1,5 @@
+trees,fares: Path 1 (length 4): trees,frees,fries,fires,fares Path 2 (length 3): trees,frees,feres,fares
+pics,cape: Path 1 (length 4): pics,pick,pack,pace,cape Path 2 (length 3): pics,pacs,caps,cape
+asks,sap: Path 1 (length 4): asks,ass,pass,pas,sap Path 2 (length 3): asks,ask,asp,sap
+rats,aids: Path 1 (length 4): rats,arts,arms,aims,aids Path 2 (length 3): rats,arts,aits,aids
+reed,ridge: Path 1 (length 4): reed,red,rid,ride,ridge Path 2 (length 3): reed,rede,ride,ridge

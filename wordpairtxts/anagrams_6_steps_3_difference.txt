@@ -1,8 +1,0 @@
-taste,beta: Path 1 (length 6): taste,baste,base,bass,bats,bets,beta, Path 2 (length 3): taste,baste,bate,beta
-satin,sing: Path 1 (length 6): satin,stain,staid,said,sand,sang,sing, Path 2 (length 3): satin,sain,sin,sing
-worth,mouth: Path 1 (length 6): worth,forth,froth,broth,both,moth,mouth, Path 2 (length 3): worth,rowth,routh,mouth
-life,lions: Path 1 (length 6): life,file,fine,fins,ins,ions,lions, Path 2 (length 3): life,line,lins,lions
-solar,polo: Path 1 (length 6): solar,soar,boar,boor,poor,pool,polo, Path 2 (length 3): solar,sola,solo,polo
-shape,praise: Path 1 (length 6): shape,share,shire,sire,rise,raise,praise, Path 2 (length 3): shape,phase,prase,praise
-open,type: Path 1 (length 6): open,pen,pan,nap,nape,tape,type, Path 2 (length 3): open,ope,tope,type
-pets,phase: Path 1 (length 6): pets,pats,cats,cast,case,chase,phase, Path 2 (length 3): pets,peas,pease,phase
