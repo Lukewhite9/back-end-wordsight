@@ -5,7 +5,7 @@ const db = new Database();
 
 // File patterns for each round
 const filePatterns = {
-  1: glob.sync("wordpairtxts/difficulty_[0-1]_[3-4]_steps.txt"),
+  1: glob.sync("wordpairtxts/difficulty_[0-1]_[3-5]_steps.txt"),
   2: glob.sync("wordpairtxts/difficulty_[1-4]_[4-6]_steps.txt"),
   3: glob.sync("wordpairtxts/difficulty_[4-6]_[5-8]_steps.txt"),
 };
