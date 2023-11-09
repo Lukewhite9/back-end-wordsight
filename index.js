@@ -13,22 +13,36 @@ const db = new Database(process.env.REPLIT_DB_URL);
 const app = express();
 const natural = require('natural');
 
-const DB_ENV_PREFIX = process.env.REPLIT_DB_ENV || 'dev';
 const { WORDNIK_API_KEY } = process.env;
 
 app.use(cors());
 app.use(express.json());
 
-function generateEntryId(date) {
-  return `leaderboard-${date}-${Date.now().toString()}`;
-}
+app.use((req, res, next) => {
+  const referer = req.get('Referer');
+  console.log(`[Request] Detected Referer: ${referer}`); // This should log on every API call
+
+  let DB_ENV_PREFIX;
+  // Determine DB_ENV_PREFIX based on the referer
+  if (referer && referer.includes('wordpath.lukewhite9.repl.co')) {
+    DB_ENV_PREFIX = 'dev';
+  } else if (referer && referer.includes('craftword.replit.app')) {
+    DB_ENV_PREFIX = 'prod';
+  } else {
+    DB_ENV_PREFIX = 'dev'; // Default to 'dev'
+  }
+
+  console.log(`[Request] DB_ENV_PREFIX is set to: ${DB_ENV_PREFIX}`); // This should log on every API call
+  req.DB_ENV_PREFIX = DB_ENV_PREFIX; // Setting the prefix on the request object
+  next();
+});
 
 
 app.post('/leaderboard', async (req, res) => {
   try {
     const { name, score, time, date, version } = req.body;
-    const entryId = `${DB_ENV_PREFIX}-${date}-${generateEntryId()}`;
-    console.log(`Leaderboard entry being added for: ${name} with score: ${score}, time: ${time}, date: ${date}, and version: ${version}`);
+    const entryId = `${req.DB_ENV_PREFIX}-leaderboard-${date}-${generateEntryId()}`;
+    console.log(`Attempting to add leaderboard entry with ID: ${entryId}`); // Logs the ID with prefix
 
     const entry = {
       name: name || null,
@@ -49,9 +63,8 @@ app.post('/leaderboard', async (req, res) => {
 app.get('/leaderboard', async (req, res) => {
   try {
     const { date } = req.query;
-    console.log('Leaderboard route queried with date:', date);
-
-    const keys = await db.list(`${DB_ENV_PREFIX}-${date}`);
+    console.log(`[GET /some-route] DB_ENV_PREFIX: ${req.DB_ENV_PREFIX}`);
+    const keys = await db.list(`${req.DB_ENV_PREFIX}-leaderboard-${date}`);
     const scoresPromises = keys.map(key => db.get(key));
     const scores = await Promise.all(scoresPromises);
 
@@ -73,11 +86,11 @@ app.get('/wordpairs', async (req, res) => {
   try {
     const { date, version } = req.query;
 
-    const keys = await db.list(`${DB_ENV_PREFIX}-version${version}-${date}`);
-    const gameKeys = keys.filter(key => key.includes(`${DB_ENV_PREFIX}-version${version}-${date}`));
+    const keys = await db.list(`${req.DB_ENV_PREFIX}-wordpair-${version}-${date}`);
+    const gameKeys = keys.filter(key => key.includes(`wordpair-${version}-${date}`));
 
     if (!gameKeys || gameKeys.length === 0) {
-      return res.status(404).json({ message: 'No games found for the specified date' });
+      return res.status(404).json({ message: 'No games found for the specified date and version' });
     }
 
     gameKeys.sort();
@@ -85,7 +98,7 @@ app.get('/wordpairs', async (req, res) => {
 
     const gameData = await db.get(latestGameKey);
     if (!gameData) {
-      return res.status(404).json({ message: `Game data not found for date ${date}` });
+      return res.status(404).json({ message: `Game data not found for date ${date} and version ${version}` });
     }
     return res.status(200).json(gameData);
 
