@@ -6,3 +6,17 @@ france,folk: Path 1 (length 8): france,franc,frank,rank,rack,rock,cork,fork,folk
 hostels,mall: Path 1 (length 8): hostels,hostel,hosted,hasted,halted,haled,hale,hall,mall Path 2 (length 7): hostels,hosels,hosel,holes,hales,hale,hall,mall
 makers,stream: Path 1 (length 8): makers,maker,make,mate,mat,meat,team,steam,stream Path 2 (length 6): makers,makes,mates,satem,stem,steam,stream
 house,depth: Path 1 (length 8): house,horse,hoarse,hearse,hears,heats,heath,death,depth Path 2 (length 7): house,hose,hoe,hae,hate,eath,death,depth
+shift,tower: Path 1 (length 8): shift,shirt,shire,shore,shored,showed,sowed,towed,tower Path 2 (length 7): shift,shirt,shire,shier,shoer,shower,sower,tower
+stream,modes: Path 1 (length 8): stream,steam,seam,seal,meal,medal,modal,model,modes Path 2 (length 6): stream,steam,stem,satem,mates,motes,modes
+steel,bucks: Path 1 (length 8): steel,sleet,sleek,leek,leeks,peeks,pecks,pucks,bucks Path 2 (length 6): steel,seel,lees,lues,luces,lucks,bucks
+urge,round: Path 1 (length 8): urge,purge,pure,pore,bore,bone,bond,bound,round Path 2 (length 7): urge,grue,rue,run,bun,bund,bound,round
+think,waters: Path 1 (length 8): think,thank,tank,talk,tale,late,later,water,waters Path 2 (length 7): think,thank,tank,tans,tats,tates,taters,waters
+hotels,dead: Path 1 (length 8): hotels,hostels,hostel,hosted,hosed,hoed,heed,deed,dead Path 2 (length 7): hotels,hosels,hosel,hosed,hoed,haed,head,dead
+tribal,prime: Path 1 (length 8): tribal,trial,trail,rail,ail,aim,rim,prim,prime Path 2 (length 6): tribal,trial,rial,ria,rim,prim,prime
+tribal,ready: Path 1 (length 8): tribal,trial,trail,rail,raid,rid,red,read,ready Path 2 (length 5): tribal,trial,rial,real,read,ready
+phrase,urge: Path 1 (length 8): phrase,phase,chase,case,care,cure,pure,purge,urge Path 2 (length 5): phrase,prase,parse,parge,purge,urge
+denial,mark: Path 1 (length 8): denial,dental,mental,metal,meal,mean,man,mar,mark Path 2 (length 7): denial,dental,mental,menta,meta,mate,mare,mark
+prove,yield: Path 1 (length 8): prove,drove,dove,dive,five,file,filed,field,yield Path 2 (length 7): prove,prole,pole,hole,hold,held,yeld,yield
+seeing,used: Path 1 (length 8): seeing,sewing,swing,sing,sin,sun,sue,sued,used Path 2 (length 7): seeing,sering,serin,serif,serf,ser,user,used
+after,think: Path 1 (length 8): after,alter,later,late,tale,talk,tank,thank,think Path 2 (length 7): after,wafter,waiter,whiter,whiner,whine,thine,think
+tribal,prize: Path 1 (length 8): tribal,trial,trail,rail,raid,rid,ride,pride,prize Path 2 (length 6): tribal,trial,triad,tried,pried,pride,prize

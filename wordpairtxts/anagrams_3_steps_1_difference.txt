@@ -1,4 +1,0 @@
-buy,pub: Path 1 (length 3): buy,bud,dub,pub, Path 2 (length 2): buy,bub,pub
-games,wages: Path 1 (length 3): games,gapes,pages,wages, Path 2 (length 2): games,gages,wages
-sizes,spies: Path 1 (length 3): sizes,sires,spires,spies, Path 2 (length 2): sizes,sipes,spies
-host,hits: Path 1 (length 3): host,hot,hit,hits, Path 2 (length 2): host,hist,hits

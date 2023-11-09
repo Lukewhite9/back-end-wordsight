@@ -1,1 +1,5 @@
 donor,oval: Path 1 (length 8): donor,door,boor,boar,bar,par,pal,opal,oval Path 2 (length 6): donor,door,rood,road,orad,oral,oval
+shirt,depth: Path 1 (length 8): shirt,short,shot,hot,hat,heat,heath,death,depth Path 2 (length 7): shirt,shire,hire,hare,hate,eath,death,depth
+hired,depth: Path 1 (length 8): hired,hared,hard,had,hat,heat,heath,death,depth Path 2 (length 6): hired,hared,hare,hate,eath,death,depth
+shirt,depth: Path 1 (length 8): shirt,short,shot,hot,hat,heat,heath,death,depth Path 2 (length 7): shirt,shire,hire,hare,hate,eath,death,depth
+code,denial: Path 1 (length 8): code,mode,model,modal,medal,metal,mental,dental,denial Path 2 (length 7): code,cade,cane,pane,panel,penal,penial,denial

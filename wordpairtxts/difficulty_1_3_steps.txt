@@ -1,0 +1,2 @@
+seal,lets: Path 1 (length 3): seal,seas,sets,lets Path 2 (length 2): seal,leas,lets
+tea,tab: Path 1 (length 3): tea,tear,tar,tab Path 2 (length 2): tea,tae,tab

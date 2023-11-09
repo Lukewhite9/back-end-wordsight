@@ -1,0 +1,7 @@
+cat,tax: Path 1 (length 3): cat,bat,tab,tax Path 2 (length 2): cat,tat,tax
+max,cam: Path 1 (length 3): max,mad,cad,cam Path 2 (length 2): max,mac,cam
+bar,lab: Path 1 (length 3): bar,bad,dab,lab Path 2 (length 2): bar,bal,lab
+made,cape: Path 1 (length 3): made,dame,came,cape Path 2 (length 2): made,cade,cape
+apt,hit: Path 1 (length 3): apt,pat,hat,hit Path 2 (length 2): apt,ait,hit
+pipe,tip: Path 1 (length 3): pipe,pie,pit,tip Path 2 (length 2): pipe,pip,tip
+cat,opt: Path 1 (length 3): cat,act,apt,opt Path 2 (length 2): cat,oat,opt

@@ -1,2 +1,8 @@
 after,titles: Path 1 (length 7): after,alter,halter,haler,hales,tales,tiles,titles Path 2 (length 6): after,alter,later,liter,tiler,tiles,titles
 shirt,death: Path 1 (length 7): shirt,short,shot,hot,hat,heat,heath,death Path 2 (length 6): shirt,shire,hire,hare,hate,eath,death
+trial,water: Path 1 (length 7): trial,trail,tail,tall,tale,late,later,water Path 2 (length 6): trial,rial,liar,lier,liter,later,water
+stack,pools: Path 1 (length 7): stack,sack,lack,lacks,locks,looks,loops,pools Path 2 (length 6): stack,sack,pack,pacs,pals,pols,pools
+trials,plate: Path 1 (length 7): trials,trails,rails,pails,pals,pale,pate,plate Path 2 (length 6): trials,rials,liars,lars,lats,late,plate
+dental,more: Path 1 (length 7): dental,mental,metal,meal,mean,moan,morn,more Path 2 (length 6): dental,mental,menta,meta,mate,mare,more
+trades,drink: Path 1 (length 7): trades,traces,crates,cranes,crane,crank,drank,drink Path 2 (length 6): trades,traces,trace,track,trank,drank,drink
+babies,grows: Path 1 (length 7): babies,babes,bares,ares,ores,roes,rows,grows Path 2 (length 6): babies,babes,bares,braes,braws,brows,grows

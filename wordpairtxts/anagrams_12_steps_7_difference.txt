@@ -1,6 +1,0 @@
-herein,rising: Path 1 (length 12): herein,heroin,heron,hero,her,hen,ten,tin,ting,sting,siting,siring,rising, Path 2 (length 5): herein,serein,serin,sering,siring,rising
-lace,longest: Path 1 (length 12): lace,face,cafe,cave,cove,cover,covert,convert,convent,content,contest,congest,longest, Path 2 (length 5): lace,lane,lone,longe,longes,longest
-herein,robin: Path 1 (length 12): herein,heroin,heron,hero,here,hire,wire,wine,wing,owing,rowing,robing,robin, Path 2 (length 5): herein,serein,serin,resin,rosin,robin
-wheels,hollow: Path 1 (length 12): wheels,heels,feels,feel,flee,flew,blew,blow,below,bellow,fellow,follow,hollow, Path 2 (length 5): wheels,heels,hells,hello,hollo,hollow
-worn,remote: Path 1 (length 12): worn,torn,ton,ten,tens,tense,tensed,tended,dented,denoted,demoted,demote,remote, Path 2 (length 5): worn,morn,more,mote,emote,remote
-number,order: Path 1 (length 12): number,lumber,limber,timber,timer,dimer,direr,rider,ruder,rudder,udder,odder,order, Path 2 (length 5): number,umber,omber,omer,ormer,order
