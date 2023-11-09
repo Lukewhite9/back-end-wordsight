@@ -90,21 +90,25 @@ function formatDate(date, format = 'yyyy-MM-dd') {
   return `${year}-${month}-${day}`;
 }
 
-async function main() {
-  let version = 4;
-  let startingDate = new Date('2023-11-06');
-  let daysProcessed = 0;
+    async function main() {
+      let version = 4;
+      let startingDate = new Date('2023-11-09');
+      let daysProcessed = 0;
 
-  while (true) {
-    let gameDataDev = {
-      gameID: `dev-version${version}-${formatDate(startingDate, 'yyyy-MM-dd')}`,
-      rounds: [],
-    };
+      const devPrefix = "dev"; 
+      const prodPrefix = "prod"; 
 
-    let gameDataProd = {
-      gameID: `prod-version${version}-${formatDate(startingDate, 'yyyy-MM-dd')}`,
-      rounds: [],
-    };
+      while (true) {
+        let formattedDate = formatDate(startingDate, 'yyyy-MM-dd');
+        let gameDataDev = {
+          gameID: `${devPrefix}-wordpair-${version}-${formattedDate}`, 
+          rounds: [],
+        };
+
+        let gameDataProd = {
+          gameID: `${prodPrefix}-wordpair-${version}-${formattedDate}`, 
+          rounds: [],
+        };
 
     for (let round = 1; round <= 3; round++) {
       let files = shuffle(filePatterns[round]);
@@ -149,20 +153,20 @@ async function main() {
       }
     }
 
-    if (gameDataDev.rounds.length === 3 && gameDataProd.rounds.length === 3) {
-      await db.set(gameDataDev.gameID, gameDataDev);
-      await db.set(gameDataProd.gameID, gameDataProd);
+if (gameDataDev.rounds.length === 3 && gameDataProd.rounds.length === 3) {
+  await db.set(gameDataDev.gameID, gameDataDev);
+  await db.set(gameDataProd.gameID, gameDataProd);
 
-      daysProcessed++;
-    } else {
-      console.log(`Couldn't find enough unique pairs for ${formatDate(startingDate)}. Stopping.`);
-      break;
-    }
+  daysProcessed++;
+} else {
+  console.log(`Couldn't find enough unique pairs for ${formattedDate}. Stopping.`);
+  break;
+}
 
-    startingDate.setDate(startingDate.getDate() + 1);
-  }
+startingDate.setDate(startingDate.getDate() + 1);
+}
 
-  console.log(`Finished processing. ${daysProcessed} complete days were processed.`);
+console.log(`Finished processing. ${daysProcessed} complete days were processed.`);
 }
 
 main();
