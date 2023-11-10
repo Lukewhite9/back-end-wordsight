@@ -137,19 +137,30 @@ app.get('/randomwordpair', async (req, res) => {
   }
 });
 
-app.get('/fetchDefinition/:word', async (req, res) => {
-  const word = req.params.word;
+const fetchDefinition = async (word, sourceDictionary) => {
+  const response = await fetch(`https://api.wordnik.com/v4/word.json/${word}/definitions?limit=3&includeRelated=false&sourceDictionaries=${sourceDictionary}&useCanonical=false&includeTags=false&api_key=${WORDNIK_API_KEY}`);
+  if (response.status !== 200) {
+    throw new Error(`Received ${response.status} status`);
+  }
+  const data = await response.json();
+  return data;
+};
+app.get('/definition/:word', async (req, res) => {
   try {
-    const url = `http://api.wordnik.com:80/v4/word.json/${word}/definitions?limit=1&includeRelated=false&useCanonical=false&includeTags=false&api_key=${WORDNIK_API_KEY}`;
-    const response = await fetch(url);
-    const definitions = await response.json();
-
-    if (!definitions.length) {
-      return res.status(404).json({ message: 'No definition found for the word' });
+    const word = natural.PorterStemmer.stem(req.params.word);
+    try {
+      const data = await fetchDefinition(word, 'ahd5');
+      return res.status(200).json(data);
+    } catch (error) {
     }
-    return res.status(200).json({ definition: definitions[0].text });
+    try {
+      const data = await fetchDefinition(word, 'wiktionary');
+      return res.status(200).json(data);
+    } catch (error) {
+    }
+    const data = await fetchDefinition(word, 'all');
+    return res.status(200).json(data);
   } catch (error) {
-    console.error('Error fetching definition:', error);
     return res.status(500).json({ message: 'Failed to fetch definition' });
   }
 });
