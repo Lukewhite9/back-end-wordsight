@@ -24,7 +24,7 @@ app.use((req, res, next) => {
 
   let DB_ENV_PREFIX;
   // Determine DB_ENV_PREFIX based on the referer
-  if (referer && referer.includes('wordpath.lukewhite9.repl.co')) {
+  if (referer && referer.includes('https://bbb1aa08-f7fb-4caf-96e8-2c51650502de-00-3qcbdn05s27z1.hacker.replit.dev')) {
     DB_ENV_PREFIX = 'dev';
   } else if (referer && referer.includes('craftword.replit.app')) {
     DB_ENV_PREFIX = 'prod';
@@ -224,3 +224,59 @@ app.listen(8080, () => {
 function generateEntryId() {
   return Date.now().toString();
 }
+
+app.post('/playdata', async (req, res) => {
+  try {
+    const { date, challengeNumber, roundIndex, movesLength } = req.body;
+    const entryId = `${req.DB_ENV_PREFIX}-playdata-${date}-${generateEntryId()}`;
+    console.log(`Attempting to add playdata entry with ID: ${entryId}`);
+
+    const entry = {
+      date,
+      challengeNumber,
+      roundIndex,
+      movesLength
+    };
+
+    await db.set(entryId, entry);
+
+    return res.status(201).json({ message: 'Playdata entry added successfully' });
+  } catch (error) {
+    return res.status(500).json({ message: 'Failed to add playdata entry' });
+  }
+});
+
+app.get('/playdata/:date', async (req, res) => {
+  try {
+    const { date } = req.params;
+    const keys = await db.list(`${req.DB_ENV_PREFIX}-playdata-${date}`);
+    const playdataPromises = keys.map(key => db.get(key));
+    const playdata = await Promise.all(playdataPromises);
+
+    // Calculate statistics for each round index
+    const roundStatistics = {};
+
+    playdata.forEach(entry => {
+      const { roundIndex, movesLength } = entry;
+      if (!roundStatistics[roundIndex]) {
+        roundStatistics[roundIndex] = {
+          totalEntries: 0,
+          totalMovesLength: 0,
+        };
+      }
+      roundStatistics[roundIndex].totalEntries++;
+      roundStatistics[roundIndex].totalMovesLength += movesLength;
+    });
+
+    const response = {
+      date,
+      roundStatistics,
+    };
+
+    res.status(200).json(response);
+  } catch (error) {
+    console.error('Error fetching playdata:', error);
+    return res.status(500).json({ message: 'Failed to fetch playdata' });
+  }
+});
+
