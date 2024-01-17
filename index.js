@@ -26,7 +26,7 @@ app.use((req, res, next) => {
   // Determine DB_ENV_PREFIX based on the referer
   if (referer && referer.includes('https://bbb1aa08-f7fb-4caf-96e8-2c51650502de-00-3qcbdn05s27z1.hacker.replit.dev')) {
     DB_ENV_PREFIX = 'dev';
-  } else if (referer && referer.includes('craftword.replit.app')) {
+  } else if (referer && (referer.includes('craftword.replit.app') || referer.includes('https://b7eae706-55fc-44d2-a096-c9ac04b8afa3-00-3umtv8v076n7u.janeway.replit.dev'))) {
     DB_ENV_PREFIX = 'prod';
   } else {
     DB_ENV_PREFIX = 'dev'; // Default to 'dev'
