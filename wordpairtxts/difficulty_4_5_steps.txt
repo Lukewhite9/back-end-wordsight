@@ -25,3 +25,11 @@ air,arena: Path 1 (length 5): air,aid,arid,aria,area,arena Path 2 (length 4): ai
 rows,were: Path 1 (length 5): rows,hows,hews,hers,here,were Path 2 (length 4): rows,raws,wars,ware,were
 lead,lions: Path 1 (length 5): lead,leads,leans,loans,loins,lions Path 2 (length 4): lead,leas,lens,liens,lions
 mails,amp: Path 1 (length 5): mails,maids,mads,dams,damp,amp Path 2 (length 4): mails,ails,als,alp,amp
+fee,urge: Path 1 (length 5): fee,see,sue,sure,surge,urge Path 2 (length 4): fee,free,gree,grue,urge
+shore,user: Path 1 (length 5): shore,shoe,she,sue,use,user Path 2 (length 4): shore,sore,sere,ser,user
+after,tape: Path 1 (length 5): after,alter,later,late,pate,tape Path 2 (length 4): after,apter,aper,ape,tape
+lies,goods: Path 1 (length 5): lies,dies,digs,dogs,gods,goods Path 2 (length 4): lies,gies,gids,gods,goods
+room,mill: Path 1 (length 5): room,doom,mood,mold,mild,mill Path 2 (length 4): room,loom,mool,moll,mill
+mate,stem: Path 1 (length 5): mate,mat,meat,team,steam,stem Path 2 (length 3): mate,mates,satem,stem
+cite,acres: Path 1 (length 5): cite,cute,cure,care,acre,acres Path 2 (length 4): cite,cate,care,acre,acres
+breed,rider: Path 1 (length 5): breed,bred,red,rid,ride,rider Path 2 (length 4): breed,brede,bride,ride,rider

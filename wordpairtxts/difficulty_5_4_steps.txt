@@ -3,3 +3,4 @@ pics,cape: Path 1 (length 4): pics,pick,pack,pace,cape Path 2 (length 3): pics,p
 asks,sap: Path 1 (length 4): asks,ass,pass,pas,sap Path 2 (length 3): asks,ask,asp,sap
 rats,aids: Path 1 (length 4): rats,arts,arms,aims,aids Path 2 (length 3): rats,arts,aits,aids
 reed,ridge: Path 1 (length 4): reed,red,rid,ride,ridge Path 2 (length 3): reed,rede,ride,ridge
+heath,have: Path 1 (length 4): heath,heat,hat,hate,have Path 2 (length 3): heath,eath,hate,have

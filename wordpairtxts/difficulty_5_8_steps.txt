@@ -3,3 +3,5 @@ shirt,depth: Path 1 (length 8): shirt,short,shot,hot,hat,heat,heath,death,depth 
 hired,depth: Path 1 (length 8): hired,hared,hard,had,hat,heat,heath,death,depth Path 2 (length 6): hired,hared,hare,hate,eath,death,depth
 shirt,depth: Path 1 (length 8): shirt,short,shot,hot,hat,heat,heath,death,depth Path 2 (length 7): shirt,shire,hire,hare,hate,eath,death,depth
 code,denial: Path 1 (length 8): code,mode,model,modal,medal,metal,mental,dental,denial Path 2 (length 7): code,cade,cane,pane,panel,penal,penial,denial
+masters,cable: Path 1 (length 8): masters,casters,caster,caste,baste,base,bale,able,cable Path 2 (length 6): masters,casters,carters,carter,carte,carle,cable
+trails,lawyer: Path 1 (length 8): trails,rails,mails,malls,males,lames,lamer,layer,lawyer Path 2 (length 7): trails,rails,lairs,laris,lares,laser,layer,lawyer

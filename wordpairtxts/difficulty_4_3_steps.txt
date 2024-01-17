@@ -1,0 +1,16 @@
+hate,heath: Path 1 (length 3): hate,hat,heat,heath Path 2 (length 2): hate,eath,heath
+lead,idea: Path 1 (length 3): lead,deal,ideal,idea Path 2 (length 3): lead,deal,ideal,idea
+brass,pays: Path 1 (length 3): brass,bass,bays,pays Path 2 (length 3): brass,bass,bays,pays
+par,pick: Path 1 (length 3): par,park,pack,pick Path 2 (length 3): par,park,pack,pick
+else,bass: Path 1 (length 3): else,ease,base,bass Path 2 (length 3): else,ease,base,bass
+move,olive: Path 1 (length 3): move,love,live,olive Path 2 (length 3): move,love,live,olive
+bang,buck: Path 1 (length 3): bang,bank,back,buck Path 2 (length 3): bang,bank,back,buck
+ahead,hard: Path 1 (length 3): ahead,head,had,hard Path 2 (length 3): ahead,head,had,hard
+fish,fix: Path 1 (length 3): fish,fist,fit,fix Path 2 (length 3): fish,fist,fit,fix
+seas,scan: Path 1 (length 3): seas,sear,scar,scan Path 2 (length 3): seas,sear,scar,scan
+surge,sub: Path 1 (length 3): surge,sure,sue,sub Path 2 (length 3): surge,sure,sue,sub
+faster,porter: Path 1 (length 3): faster,foster,poster,porter Path 2 (length 3): faster,foster,poster,porter
+tan,mask: Path 1 (length 3): tan,man,mas,mask Path 2 (length 3): tan,man,mas,mask
+signs,skin: Path 1 (length 3): signs,sign,sin,skin Path 2 (length 3): signs,sign,sin,skin
+closer,chosen: Path 1 (length 3): closer,close,chose,chosen Path 2 (length 3): closer,close,chose,chosen
+short,story: Path 1 (length 3): short,shore,store,story Path 2 (length 3): short,shore,store,story

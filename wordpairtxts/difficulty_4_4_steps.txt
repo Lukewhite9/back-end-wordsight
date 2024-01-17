@@ -5,3 +5,4 @@ fool,proof: Path 1 (length 4): fool,foot,root,roof,proof Path 2 (length 3): fool
 breed,ride: Path 1 (length 4): breed,bred,red,rid,ride Path 2 (length 3): breed,brede,bride,ride
 dual,lid: Path 1 (length 4): dual,deal,lead,lad,lid Path 2 (length 3): dual,dal,lad,lid
 state,type: Path 1 (length 4): state,spate,pate,tape,type Path 2 (length 3): state,tate,tape,type
+pack,camps: Path 1 (length 4): pack,pace,cape,caps,camps Path 2 (length 3): pack,pacs,caps,camps

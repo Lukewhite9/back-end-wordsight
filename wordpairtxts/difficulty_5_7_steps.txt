@@ -6,3 +6,9 @@ trials,plate: Path 1 (length 7): trials,trails,rails,pails,pals,pale,pate,plate 
 dental,more: Path 1 (length 7): dental,mental,metal,meal,mean,moan,morn,more Path 2 (length 6): dental,mental,menta,meta,mate,mare,more
 trades,drink: Path 1 (length 7): trades,traces,crates,cranes,crane,crank,drank,drink Path 2 (length 6): trades,traces,trace,track,trank,drank,drink
 babies,grows: Path 1 (length 7): babies,babes,bares,ares,ores,roes,rows,grows Path 2 (length 6): babies,babes,bares,braes,braws,brows,grows
+move,rental: Path 1 (length 7): move,mode,model,modal,medal,metal,mental,rental Path 2 (length 6): move,mote,mate,meta,menta,mental,rental
+titles,waters: Path 1 (length 7): titles,tiles,files,fives,wives,waves,wavers,waters Path 2 (length 4): titles,titres,titers,taters,waters
+tribal,later: Path 1 (length 7): tribal,trial,trail,tail,tall,tale,late,later Path 2 (length 6): tribal,trial,rial,liar,lier,liter,later
+gene,sacred: Path 1 (length 7): gene,gone,cone,cane,caned,cared,scared,sacred Path 2 (length 6): gene,agene,agee,aged,aced,acred,sacred
+mini,doors: Path 1 (length 7): mini,mind,mild,mold,molds,moods,dooms,doors Path 2 (length 5): mini,miri,mirs,mors,dors,doors
+rental,move: Path 1 (length 7): rental,mental,metal,medal,modal,model,mode,move Path 2 (length 6): rental,mental,menta,meta,mate,mote,move
