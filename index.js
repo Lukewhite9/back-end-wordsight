@@ -262,10 +262,15 @@ app.get('/playdata/:date', async (req, res) => {
         roundStatistics[roundIndex] = {
           totalEntries: 0,
           totalMovesLength: 0,
+          totalMovesLengthZero: 0, // Initialize the new field
         };
       }
       roundStatistics[roundIndex].totalEntries++;
       roundStatistics[roundIndex].totalMovesLength += movesLength;
+
+      if (movesLength === 0) {
+        roundStatistics[roundIndex].totalMovesLengthZero++; // Increment when movesLength is 0
+      }
     });
 
     const response = {
@@ -279,4 +284,5 @@ app.get('/playdata/:date', async (req, res) => {
     return res.status(500).json({ message: 'Failed to fetch playdata' });
   }
 });
+
 

@@ -5,10 +5,17 @@ const db = new Database();
 
 // File patterns for each round
 const filePatterns = {
-  1: glob.sync("wordpairtxts/difficulty_[0-2]_[3]_steps.txt"),
-  2: glob.sync("wordpairtxts/difficulty_[1-4]_[4-6]_steps.txt"),
-  3: glob.sync("wordpairtxts/difficulty_[4-6]_[5-8]_steps.txt"),
+  1: glob.sync("wordpairtxts/difficulty_[0-3]_[3]_steps.txt"),
+  2: [
+    ...glob.sync("wordpairtxts/difficulty_[3-5]_[3-4]_steps.txt"),
+    ...glob.sync("wordpairtxts/difficulty_[1-3]_[5]_steps.txt"),
+  ],
+  3: [
+    ...glob.sync("wordpairtxts/difficulty_[5-6]_[5-6]_steps.txt"),
+    ...glob.sync("wordpairtxts/difficulty_[0-4]_[7]_steps.txt"),
+  ],
 };
+
 
 let seenPairs = new Set();
 
@@ -91,7 +98,7 @@ function formatDate(date, format = 'yyyy-MM-dd') {
 }
 
     async function main() {
-      let version = 4;
+      let version = 5;
       let startingDate = new Date('2024-01-17');
       let daysProcessed = 0;
 
