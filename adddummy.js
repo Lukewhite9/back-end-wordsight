@@ -5,7 +5,7 @@ const db = new Database();
 
 // File patterns for each round
 const filePatterns = {
-  1: glob.sync("wordpairtxts/difficulty_[0-6]_[3]_steps.txt"),
+  1: glob.sync("wordpairtxts/difficulty_[0-3]_[3]_steps.txt"),
   2: [
     ...glob.sync("wordpairtxts/difficulty_[3-5]_[3-4]_steps.txt"),
     ...glob.sync("wordpairtxts/difficulty_[1-3]_[5]_steps.txt"),
@@ -99,83 +99,54 @@ function formatDate(date, format = 'yyyy-MM-dd') {
   return `${year}-${month}-${day}`;
 }
 
-    async function main() {
-      let version = 5;
-      let startingDate = new Date('2024-01-18');
-      let daysProcessed = 0;
+async function main() {
+  let version = 5;
+  let startingDate = new Date('2023-12-10');
+  let daysProcessed = 0;
 
-      const devPrefix = "dev"; 
-      const prodPrefix = "prod"; 
+  const devPrefix = "dev"; 
+  const prodPrefix = "prod"; 
 
-      while (true) {
-        let formattedDate = formatDate(startingDate, 'yyyy-MM-dd');
-        let gameDataDev = {
-          gameID: `${devPrefix}-wordpair-${version}-${formattedDate}`, 
-          rounds: [],
-        };
+  while (true) {
+    let formattedDate = formatDate(startingDate, 'yyyy-MM-dd');
+    let gameDataDev = {
+      gameID: `${devPrefix}-wordpair-${version}-${formattedDate}`, 
+      rounds: [],
+    };
 
-        let gameDataProd = {
-          gameID: `${prodPrefix}-wordpair-${version}-${formattedDate}`, 
-          rounds: [],
-        };
+    let gameDataProd = {
+      gameID: `${prodPrefix}-wordpair-${version}-${formattedDate}`, 
+      rounds: [],
+    };
 
     for (let round = 1; round <= 3; round++) {
-      let files = shuffle(filePatterns[round]);
-      let pairAdded = false;
+      const dummyPair = {
+        round_number: round,
+        start_word: `dummy-${formattedDate}-start`,
+        goal_word: `dummy-${formattedDate}-goal`,
+        path_length: 3,
+        best_possible_length: 2,
+        best_possible_words: 'dummy,path,words'
+      };
 
-      for (let file of files) {
-        let wordPairs = parseTxtToJson(file);
-
-        for (let pair of wordPairs) {
-          if (!seenPairs.has(`${pair.start_word}-${pair.goal_word}`)) {
-            seenPairs.add(`${pair.start_word}-${pair.goal_word}`);
-
-            let roundData = {
-              round_number: round,
-              start_word: pair.start_word,
-              goal_word: pair.goal_word,
-              path_length: pair.path_length,
-              best_possible_length: pair.best_possible_length,
-              best_possible_words: pair.best_possible_words
-            };
-
-            gameDataDev.rounds.push(roundData);
-            gameDataProd.rounds.push(roundData);
-
-            console.log(
-              `Added pair ${pair.start_word}-${pair.goal_word} with path length ${pair.path_length}, best possible length ${pair.best_possible_length}, and best possible words ${pair.best_possible_words} for round ${round} on ${formatDate(startingDate)} to both environments`
-            );
-
-            pairAdded = true;
-            break; 
-          }
-        }
-
-        if (pairAdded) {
-          break; 
-        }
-      }
-
-      if (!pairAdded) {
-        console.log(`No suitable word pair found for round ${round} on ${formatDate(startingDate)}. Skipping day.`);
-        break;
-      }
+      gameDataDev.rounds.push(dummyPair);
+      gameDataProd.rounds.push(dummyPair);
+      console.log(`Added dummy pair for round ${round} on ${formattedDate} to both environments`);
     }
 
-if (gameDataDev.rounds.length === 3 && gameDataProd.rounds.length === 3) {
-  await db.set(gameDataDev.gameID, gameDataDev);
-  await db.set(gameDataProd.gameID, gameDataProd);
+    await db.set(gameDataDev.gameID, gameDataDev);
+    await db.set(gameDataProd.gameID, gameDataProd);
 
-  daysProcessed++;
-} else {
-  console.log(`Couldn't find enough unique pairs for ${formattedDate}. Stopping.`);
-  break;
-}
+    daysProcessed++;
+    startingDate.setDate(startingDate.getDate() + 1);
 
-startingDate.setDate(startingDate.getDate() + 1);
-}
+    if (daysProcessed >= 10) { // Just an arbitrary limit to prevent infinite loop
+      break;
+    }
+  }
 
-console.log(`Finished processing. ${daysProcessed} complete days were processed.`);
+  console.log(`Finished processing. ${daysProcessed} complete days were processed.`);
 }
 
 main();
+

@@ -1,27 +1,36 @@
 const Database = require("@replit/database");
 const db = new Database();
-const targetDate = new Date("2024-09-12");
 
-// Fetch all keys from the database
-db.list()
-  .then(async (keys) => {
-    // Fetch values for all keys and filter based on date and version
-    const valuesPromises = keys.map((key) => db.get(key));
-    const allValues = await Promise.all(valuesPromises);
+function formatDate(date) {
+  let year = date.getFullYear();
+  let month = String(date.getMonth() + 1).padStart(2, '0');
+  let day = String(date.getDate()).padStart(2, '0');
+  return `${year}-${month}-${day}`;
+}
 
-    const filteredKeys = keys.filter((key, index) => {
-      const entry = allValues[index];
-      const entryDate = new Date(entry.date);
-      return entryDate > targetDate && entry.gameID && entry.gameID.startsWith("version4");
-    });
+async function deleteWordpairKeys(startDate, endDate, version) {
+  let currentDate = new Date(startDate);
+  endDate = new Date(endDate);
 
-    // Delete entries with filtered keys
-    const deletePromises = filteredKeys.map((key) => db.delete(key));
-    return Promise.all(deletePromises);
-  })
-  .then(() => {
-    console.log("Selected entries have been deleted from the database.");
-  })
-  .catch((error) => {
-    console.error("An error occurred:", error);
-  });
+  while (currentDate <= endDate) {
+    const dateString = formatDate(currentDate);
+    const devKey = `dev-wordpair-${version}-${dateString}`;
+    const prodKey = `prod-wordpair-${version}-${dateString}`;
+
+    try {
+      await Promise.all([db.delete(devKey), db.delete(prodKey)]);
+      console.log(`Deleted keys for date: ${dateString}`);
+    } catch (error) {
+      console.error(`Error deleting keys for ${dateString}:`, error);
+    }
+
+    currentDate.setDate(currentDate.getDate() + 1);
+  }
+}
+
+// Usage
+const startDate = '2023-12-14'; // Format: YYYY-MM-DD
+const endDate = '2024-01-16'; // Format: YYYY-MM-DD
+const versionNumber = '5'; // Version number
+
+deleteWordpairKeys(startDate, endDate, versionNumber);

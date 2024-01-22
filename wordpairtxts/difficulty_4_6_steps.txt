@@ -40,3 +40,9 @@ shade,use: Path 1 (length 6): shade,shame,same,fame,fume,fuse,use Path 2 (length
 ref,trial: Path 1 (length 6): ref,red,rid,raid,rail,trail,trial Path 2 (length 4): ref,rif,ria,rial,trial
 lung,table: Path 1 (length 6): lung,long,lone,lane,late,tale,table Path 2 (length 5): lung,lang,lane,late,tale,table
 shapes,closed: Path 1 (length 6): shapes,phases,chases,chase,chose,close,closed Path 2 (length 5): shapes,chapes,chases,choses,closes,closed
+phrase,spaces: Path 1 (length 6): phrase,phase,phases,shapes,shades,spades,spaces Path 2 (length 5): phrase,phase,pase,pace,paces,spaces
+donor,blond: Path 1 (length 6): donor,door,boor,boom,bloom,blood,blond Path 2 (length 5): donor,door,rood,brood,blood,blond
+latter,tells: Path 1 (length 6): latter,later,late,tale,tall,tell,tells Path 2 (length 5): latter,later,taler,tales,teles,tells
+talks,lawyer: Path 1 (length 6): talks,tales,males,lames,lamer,layer,lawyer Path 2 (length 5): talks,tales,taler,later,layer,lawyer
+bin,urge: Path 1 (length 6): bin,bun,sun,sue,sure,surge,urge Path 2 (length 5): bin,bun,run,rue,grue,urge
+few,urge: Path 1 (length 6): few,fee,see,sue,sure,surge,urge Path 2 (length 5): few,fee,free,gree,grue,urge

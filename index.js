@@ -20,19 +20,16 @@ app.use(express.json());
 
 app.use((req, res, next) => {
   const referer = req.get('Referer');
-  console.log(`[Request] Detected Referer: ${referer}`); // This should log on every API call
+  console.log(`Detected Referer: ${referer}`); // Logs the detected referer
 
   let DB_ENV_PREFIX;
-  // Determine DB_ENV_PREFIX based on the referer
-  if (referer && referer.includes('https://bbb1aa08-f7fb-4caf-96e8-2c51650502de-00-3qcbdn05s27z1.hacker.replit.dev')) {
-    DB_ENV_PREFIX = 'dev';
-  } else if (referer && (referer.includes('craftword.replit.app') || referer.includes('https://b7eae706-55fc-44d2-a096-c9ac04b8afa3-00-3umtv8v076n7u.janeway.replit.dev'))) {
+  if (referer && referer.includes('craftword.replit.app')) {
     DB_ENV_PREFIX = 'prod';
   } else {
-    DB_ENV_PREFIX = 'dev'; // Default to 'dev'
+    DB_ENV_PREFIX = process.env.REPLIT_DB_ENV || 'dev'; // Default to 'dev' or use REPLIT_DB_ENV if set
   }
 
-  console.log(`[Request] DB_ENV_PREFIX is set to: ${DB_ENV_PREFIX}`); // This should log on every API call
+  console.log(`DB_ENV_PREFIX is set to: ${DB_ENV_PREFIX}`); // Logs the DB_ENV_PREFIX
   req.DB_ENV_PREFIX = DB_ENV_PREFIX; // Setting the prefix on the request object
   next();
 });

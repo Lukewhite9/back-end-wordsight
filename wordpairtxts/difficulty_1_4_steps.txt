@@ -111,3 +111,17 @@ file,bee: Path 1 (length 4): file,life,lie,lee,bee Path 2 (length 3): file,fie,f
 game,mass: Path 1 (length 4): game,dame,dams,mads,mass Path 2 (length 3): game,gams,mags,mass
 blow,bat: Path 1 (length 4): blow,blot,bolt,boat,bat Path 2 (length 3): blow,blaw,blat,bat
 said,caps: Path 1 (length 4): said,dais,dabs,cabs,caps Path 2 (length 3): said,dais,daps,caps
+send,con: Path 1 (length 4): send,dens,den,don,con Path 2 (length 3): send,sen,son,con
+gap,fact: Path 1 (length 4): gap,cap,cat,act,fact Path 2 (length 3): gap,gat,fat,fact
+sail,lay: Path 1 (length 4): sail,pail,pal,lap,lay Path 2 (length 3): sail,sal,las,lay
+fares,earl: Path 1 (length 4): fares,ares,eras,ears,earl Path 2 (length 3): fares,fare,farl,earl
+doc,rows: Path 1 (length 4): doc,cod,cods,cows,rows Path 2 (length 3): doc,docs,dows,rows
+ace,sit: Path 1 (length 4): ace,act,cat,sat,sit Path 2 (length 3): ace,act,ait,sit
+hub,bin: Path 1 (length 4): hub,dub,bud,bid,bin Path 2 (length 3): hub,bub,bib,bin
+mini,dim: Path 1 (length 4): mini,mine,dine,die,dim Path 2 (length 3): mini,midi,mid,dim
+wage,wired: Path 1 (length 4): wage,wade,wide,wider,wired Path 2 (length 3): wage,waged,wared,wired
+son,form: Path 1 (length 4): son,nos,nor,for,form Path 2 (length 3): son,fon,for,form
+role,wake: Path 1 (length 4): role,lore,wore,woke,wake Path 2 (length 3): role,rale,rake,wake
+camps,has: Path 1 (length 4): camps,amps,maps,mas,has Path 2 (length 3): camps,cams,hams,has
+tab,new: Path 1 (length 4): tab,bat,bet,net,new Path 2 (length 3): tab,nab,naw,new
+page,shape: Path 1 (length 4): page,pare,hare,share,shape Path 2 (length 3): page,pase,phase,shape

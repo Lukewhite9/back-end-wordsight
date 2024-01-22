@@ -20,3 +20,4 @@ blood,honor: Path 1 (length 6): blood,bloom,boom,boor,door,donor,honor Path 2 (l
 tiles,after: Path 1 (length 6): tiles,tales,hales,haler,halter,alter,after Path 2 (length 5): tiles,tales,taler,later,alter,after
 host,shaft: Path 1 (length 6): host,hoist,foist,fist,sift,shift,shaft Path 2 (length 3): host,hast,haft,shaft
 sub,nurses: Path 1 (length 6): sub,cub,cube,cubes,cures,curses,nurses Path 2 (length 5): sub,bus,burs,burse,burses,nurses
+spare,thus: Path 1 (length 6): spare,share,shore,shoe,shot,shut,thus Path 2 (length 5): spare,pare,pars,tars,taus,thus

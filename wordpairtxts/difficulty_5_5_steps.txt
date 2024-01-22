@@ -5,3 +5,4 @@ drugs,bears: Path 1 (length 5): drugs,drags,brags,bags,bars,bears Path 2 (length
 hitting,starting: Path 1 (length 5): hitting,sitting,setting,seating,stating,starting Path 2 (length 4): hitting,hatting,ratting,tarting,starting
 demo,merge: Path 1 (length 5): demo,dome,mode,more,mere,merge Path 2 (length 4): demo,deme,dere,mere,merge
 very,bye: Path 1 (length 5): very,every,ever,eve,eye,bye Path 2 (length 4): very,eery,eyre,byre,bye
+math,mental: Path 1 (length 5): math,mat,meat,meal,metal,mental Path 2 (length 4): math,mate,meta,menta,mental

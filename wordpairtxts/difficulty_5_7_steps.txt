@@ -12,3 +12,7 @@ tribal,later: Path 1 (length 7): tribal,trial,trail,tail,tall,tale,late,later Pa
 gene,sacred: Path 1 (length 7): gene,gone,cone,cane,caned,cared,scared,sacred Path 2 (length 6): gene,agene,agee,aged,aced,acred,sacred
 mini,doors: Path 1 (length 7): mini,mind,mild,mold,molds,moods,dooms,doors Path 2 (length 5): mini,miri,mirs,mors,dors,doors
 rental,move: Path 1 (length 7): rental,mental,metal,medal,modal,model,mode,move Path 2 (length 6): rental,mental,menta,meta,mate,mote,move
+hired,death: Path 1 (length 7): hired,hared,hard,had,hat,heat,heath,death Path 2 (length 5): hired,hared,hare,hate,eath,death
+helps,mouse: Path 1 (length 7): helps,heaps,hears,hearse,hoarse,horse,house,mouse Path 2 (length 6): helps,hells,mells,molls,moles,moues,mouse
+sauce,width: Path 1 (length 7): sauce,cause,case,cash,wash,wish,with,width Path 2 (length 6): sauce,saice,sice,site,sith,with,width
+rand,proved: Path 1 (length 7): rand,band,bard,bared,bored,robed,probed,proved Path 2 (length 6): rand,rad,rod,rode,rove,prove,proved

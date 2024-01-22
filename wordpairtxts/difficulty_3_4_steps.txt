@@ -99,3 +99,13 @@ sites,list: Path 1 (length 4): sites,site,sit,lit,list Path 2 (length 3): sites,
 food,doors: Path 1 (length 4): food,foods,moods,dooms,doors Path 2 (length 3): food,foods,roods,doors
 rule,page: Path 1 (length 4): rule,lure,pure,pare,page Path 2 (length 3): rule,pule,pale,page
 air,area: Path 1 (length 4): air,aid,arid,aria,area Path 2 (length 3): air,ria,aria,area
+rock,nor: Path 1 (length 4): rock,cork,fork,for,nor Path 2 (length 3): rock,cork,cor,nor
+rows,sole: Path 1 (length 4): rows,lows,loss,lose,sole Path 2 (length 3): rows,sows,sols,sole
+users,sure: Path 1 (length 4): users,user,use,ruse,sure Path 2 (length 3): users,sers,sere,sure
+sure,ease: Path 1 (length 4): sure,cure,care,case,ease Path 2 (length 3): sure,ruse,rase,ease
+dark,track: Path 1 (length 4): dark,bark,back,rack,track Path 2 (length 3): dark,cark,rack,track
+sole,slots: Path 1 (length 4): sole,lose,loss,lots,slots Path 2 (length 3): sole,sloe,sloes,slots
+wash,swap: Path 1 (length 4): wash,was,pas,sap,swap Path 2 (length 3): wash,was,wap,swap
+wins,fish: Path 1 (length 4): wins,fins,fits,fist,fish Path 2 (length 3): wins,wis,wish,fish
+dolls,old: Path 1 (length 4): dolls,doles,soled,sold,old Path 2 (length 3): dolls,dols,sold,old
+work,deck: Path 1 (length 4): work,cork,rock,dock,deck Path 2 (length 3): work,dork,dock,deck

@@ -59,3 +59,16 @@ struck,ski: Path 1 (length 7): struck,stuck,stack,sack,sac,say,sky,ski Path 2 (l
 free,arena: Path 1 (length 7): free,fee,bee,bye,aye,are,area,arena Path 2 (length 5): free,fere,ere,are,area,arena
 layers,tells: Path 1 (length 7): layers,layer,later,late,tale,tall,tell,tells Path 2 (length 6): layers,hayers,halers,hales,halls,hells,tells
 texts,laser: Path 1 (length 7): texts,teats,beats,bats,bars,bares,baser,laser Path 2 (length 5): texts,texas,taxes,tares,lares,laser
+themes,worst: Path 1 (length 7): themes,theme,there,here,were,wore,worse,worst Path 2 (length 6): themes,theres,wheres,whores,whorts,worts,worst
+mouse,shapes: Path 1 (length 7): mouse,house,hose,chose,chase,chases,phases,shapes Path 2 (length 6): mouse,morse,marse,mares,hares,shares,shapes
+brick,purse: Path 1 (length 7): brick,brisk,risk,rise,ruse,sure,pure,purse Path 2 (length 6): brick,brisk,bisk,bise,birse,burse,purse
+corps,zero: Path 1 (length 7): corps,carps,cards,card,hard,herd,hero,zero Path 2 (length 4): corps,cores,ceros,cero,zero
+latter,stands: Path 1 (length 7): latter,later,lamer,lames,lanes,lands,sands,stands Path 2 (length 6): latter,later,slater,slates,stales,stanes,stands
+match,rental: Path 1 (length 7): match,math,mat,meat,meal,metal,mental,rental Path 2 (length 6): match,math,mate,meta,menta,mental,rental
+tubes,quite: Path 1 (length 7): tubes,cubes,cube,cute,cite,site,suite,quite Path 2 (length 5): tubes,tubs,tuis,suit,quit,quite
+moral,blood: Path 1 (length 7): moral,coral,coal,cool,fool,food,flood,blood Path 2 (length 6): moral,molal,moll,mool,loom,bloom,blood
+looks,alter: Path 1 (length 7): looks,locks,lacks,laces,lace,late,later,alter Path 2 (length 6): looks,locks,lacks,laces,lacer,later,alter
+see,phrase: Path 1 (length 7): see,sea,seam,sham,shame,shape,phase,phrase Path 2 (length 5): see,pee,pree,prese,prase,phrase
+awards,door: Path 1 (length 7): awards,award,ward,bard,bar,boar,boor,door Path 2 (length 6): awards,award,ward,word,wood,rood,door
+honor,sword: Path 1 (length 7): honor,donor,door,doom,mood,wood,word,sword Path 2 (length 6): honor,donor,donors,doors,dors,sord,sword
+donor,blind: Path 1 (length 7): donor,door,boor,boom,bloom,blood,blond,blind Path 2 (length 6): donor,door,rood,brood,blood,blond,blind

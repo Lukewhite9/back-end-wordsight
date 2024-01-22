@@ -33,3 +33,9 @@ room,mill: Path 1 (length 5): room,doom,mood,mold,mild,mill Path 2 (length 4): r
 mate,stem: Path 1 (length 5): mate,mat,meat,team,steam,stem Path 2 (length 3): mate,mates,satem,stem
 cite,acres: Path 1 (length 5): cite,cute,cure,care,acre,acres Path 2 (length 4): cite,cate,care,acre,acres
 breed,rider: Path 1 (length 5): breed,bred,red,rid,ride,rider Path 2 (length 4): breed,brede,bride,ride,rider
+block,polo: Path 1 (length 5): block,lock,look,loop,pool,polo Path 2 (length 4): block,bock,pock,poco,polo
+facts,cite: Path 1 (length 5): facts,acts,cats,cuts,cute,cite Path 2 (length 4): facts,acts,cats,cate,cite
+ride,trial: Path 1 (length 5): ride,rid,raid,rail,trail,trial Path 2 (length 4): ride,rid,ria,rial,trial
+areas,air: Path 1 (length 5): areas,area,are,arm,aim,air Path 2 (length 4): areas,area,aria,ria,air
+lamb,baths: Path 1 (length 5): lamb,lab,labs,tabs,bats,baths Path 2 (length 4): lamb,lams,bams,bats,baths
+wired,driven: Path 1 (length 5): wired,wider,rider,river,driver,driven Path 2 (length 4): wired,wived,rived,riven,driven

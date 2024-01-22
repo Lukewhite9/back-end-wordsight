@@ -4,3 +4,5 @@ asks,sap: Path 1 (length 4): asks,ass,pass,pas,sap Path 2 (length 3): asks,ask,a
 rats,aids: Path 1 (length 4): rats,arts,arms,aims,aids Path 2 (length 3): rats,arts,aits,aids
 reed,ridge: Path 1 (length 4): reed,red,rid,ride,ridge Path 2 (length 3): reed,rede,ride,ridge
 heath,have: Path 1 (length 4): heath,heat,hat,hate,have Path 2 (length 3): heath,eath,hate,have
+ridge,reed: Path 1 (length 4): ridge,ride,rid,red,reed Path 2 (length 3): ridge,ride,rede,reed
+heath,have: Path 1 (length 4): heath,heat,hat,hate,have Path 2 (length 3): heath,eath,hate,have

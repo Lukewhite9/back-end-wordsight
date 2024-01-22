@@ -32,3 +32,9 @@ thus,items: Path 1 (length 8): thus,shut,shot,shop,shops,stops,steps,stems,items
 letters,still: Path 1 (length 8): letters,letter,latter,later,late,slate,stale,stall,still Path 2 (length 7): letters,letter,litter,liter,tiler,tile,stile,still
 lawyer,tools: Path 1 (length 8): lawyer,layer,laser,loser,lores,roles,rolls,tolls,tools Path 2 (length 7): lawyer,layer,later,late,lats,lots,loots,tools
 themes,sauce: Path 1 (length 8): themes,theme,there,here,hare,care,case,cause,sauce Path 2 (length 7): themes,hemes,femes,fames,faces,fauces,sauces,sauce
+donors,moral: Path 1 (length 8): donors,donor,door,boor,boar,soar,solar,molar,moral Path 2 (length 5): donors,doors,dors,mors,mora,moral
+oven,turned: Path 1 (length 8): oven,omen,men,ten,ton,tone,toned,tuned,turned Path 2 (length 6): oven,coven,coden,coned,toned,tuned,turned
+surge,keys: Path 1 (length 8): surge,sure,ruse,rues,hues,hes,hey,key,keys Path 2 (length 6): surge,sarge,sage,sags,says,kays,keys
+deaths,hopes: Path 1 (length 8): deaths,dearths,hearths,hearts,harts,halts,hales,holes,hopes Path 2 (length 6): deaths,heaths,heats,haets,haes,hoes,hopes
+yield,prove: Path 1 (length 8): yield,field,filed,file,five,dive,dove,drove,prove Path 2 (length 7): yield,field,filed,file,five,rive,rove,prove
+raise,seeking: Path 1 (length 8): raise,rise,sire,sine,sing,swing,sewing,seeing,seeking Path 2 (length 7): raise,rise,risen,resin,serin,sering,seeing,seeking

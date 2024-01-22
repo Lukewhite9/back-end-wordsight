@@ -5,3 +5,7 @@ shirt,depth: Path 1 (length 8): shirt,short,shot,hot,hat,heat,heath,death,depth 
 code,denial: Path 1 (length 8): code,mode,model,modal,medal,metal,mental,dental,denial Path 2 (length 7): code,cade,cane,pane,panel,penal,penial,denial
 masters,cable: Path 1 (length 8): masters,casters,caster,caste,baste,base,bale,able,cable Path 2 (length 6): masters,casters,carters,carter,carte,carle,cable
 trails,lawyer: Path 1 (length 8): trails,rails,mails,malls,males,lames,lamer,layer,lawyer Path 2 (length 7): trails,rails,lairs,laris,lares,laser,layer,lawyer
+phrase,sofa: Path 1 (length 8): phrase,phase,shape,share,shore,short,sort,soft,sofa Path 2 (length 6): phrase,prase,prose,rose,sore,sora,sofa
+layers,trial: Path 1 (length 8): layers,layer,later,late,tale,tall,tail,trail,trial Path 2 (length 7): layers,lagers,lager,liger,lier,liar,rial,trial
+stream,marker: Path 1 (length 8): stream,steam,team,meat,mat,mate,make,maker,marker Path 2 (length 7): stream,steam,stem,satem,mates,makes,maker,marker
+wild,honors: Path 1 (length 8): wild,mild,mold,molds,moods,dooms,doors,donors,honors Path 2 (length 7): wild,sild,sold,dols,dors,doors,donors,honors
